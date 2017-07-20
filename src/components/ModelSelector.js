@@ -17,6 +17,7 @@ class ModelSelector extends Component {
 }
 
 // static class properties not working with the eslint version used from cra
+// fixed in cra 1.0.11, see facebookincubator/create-react-app#2735
 ModelSelector.propTypes = {
   models: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
