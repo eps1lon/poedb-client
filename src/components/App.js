@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import ModelSelector from '../containers/ModelSelector';
+import ModelQueryInterface from '../containers/ModelQueryInterface';
 
 import logo from './logo.svg';
 import './App.css';
@@ -14,6 +15,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <ModelSelector />
+        <ModelQueryInterface />
       </div>
     );
   }

@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => {
   return {
     handleChange: ({ model }) => {
       if (model) {
-        dispatch(api.actions.describe({ model }));
+        dispatch(api.actions.model({ model }));
       }
     },
     init: dispatch(api.actions.models()),
