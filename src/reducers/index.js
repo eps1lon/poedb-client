@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
 
-import model from './model';
-import models from './models';
+import api from '../api';
 
 // empty state for now
-const rootReducer = combineReducers({ model, models });
+const rootReducer = combineReducers({ ...api.reducers });
 
 export default rootReducer;
