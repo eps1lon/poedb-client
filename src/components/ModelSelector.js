@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ModelSelector extends Component {
   render() {
@@ -14,5 +15,10 @@ class ModelSelector extends Component {
     );
   }
 }
+
+// static class properties not working with the eslint version used from cra
+ModelSelector.propTypes = {
+  models: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default ModelSelector;
