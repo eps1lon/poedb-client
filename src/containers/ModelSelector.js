@@ -9,8 +9,10 @@ const mapStateToProps = ({ models: { data } }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleChange: model => {
-      console.log('change', model);
+    handleChange: ({ model }) => {
+      if (model) {
+        dispatch(api.actions.describe({ model }));
+      }
     },
     init: dispatch(api.actions.models()),
   };

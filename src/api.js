@@ -14,4 +14,7 @@ export default reduxApi({
       },
     },
   },
+  describe: {
+    url: `http://localhost:3000/v1/describe/:model`,
+  },
 }).use('fetch', adapterFetch(fetch)); // it's necessary to point using REST backend
