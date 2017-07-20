@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import configureStore from "./store";
-import "./index.css";
-import App from "./components/App";
-import registerServiceWorker from "./registerServiceWorker";
+import configureStore from './store';
+import './index.css';
+import App from './components/App';
+import registerServiceWorker from './registerServiceWorker';
 
 const store = configureStore();
 
@@ -19,5 +19,5 @@ class Main extends Component {
   }
 }
 
-ReactDOM.render(<Main />, document.getElementById("root"));
+ReactDOM.render(<Main />, document.getElementById('root'));
 registerServiceWorker();
