@@ -3,11 +3,11 @@ const initial = {
   selected: -1, // key of #data
 };
 
-const model = (state = initial, { type, payload }) => {
+const models = (state = initial, { type, payload }) => {
   switch (type) {
     default:
       return state;
   }
 };
 
-export default model;
+export default models;
