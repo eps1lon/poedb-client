@@ -9,7 +9,7 @@
       "jsx": true
     }
   },
-  "extends": ["eslint:recommended", "prettier", "prettier/react"],
+  "extends": ["react-app", "prettier", "prettier/react"],
   "plugins": ["react", "prettier"],
   "rules": {
     "no-console": "off",
