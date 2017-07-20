@@ -6,9 +6,11 @@ import 'react-table/react-table.css';
 
 class Records extends Component {
   render() {
-    const { header, records } = this.props;
+    const { header, records, loading_records } = this.props;
 
-    return <ReactTable data={records} columns={header} />;
+    return (
+      <ReactTable data={loading_records ? [] : records} columns={header} />
+    );
   }
 }
 

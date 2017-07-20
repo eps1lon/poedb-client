@@ -4,8 +4,12 @@ import Records from '../components/Records';
 import { buildHeader } from '../selectors/model';
 
 const mapStateToProps = state => {
-  const { records } = state;
-  return { header: buildHeader(state), records: records.data };
+  const { records: { data, loading } } = state;
+  return {
+    header: buildHeader(state),
+    records: data,
+    loading_records: loading,
+  };
 };
 
 export default connect(mapStateToProps)(Records);
