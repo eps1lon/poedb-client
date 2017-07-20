@@ -4,21 +4,22 @@ import adapterFetch from 'redux-api/lib/adapters/fetch';
 export default reduxApi({
   // complex endpoint description
   models: {
-    url: `http://localhost:3000/v1/models`,
+    url: `/models`,
     // reimplement default `transformers.object`
     transformer: transformers.array,
-    // base endpoint options `fetch(url, options)`
-    options: {
-      headers: {
-        Accept: 'application/json',
-      },
-    },
   },
   model: {
-    url: `http://localhost:3000/v1/describe/:model`,
+    url: `/describe/:model`,
   },
   records: {
-    url: `http://localhost:3000/v1/find/:model`,
+    url: `/find/:model`,
     transformer: data => (data ? data.result : []),
   },
-}).use('fetch', adapterFetch(fetch)); // it's necessary to point using REST backend
+})
+  .use('fetch', adapterFetch(fetch))
+  .use('rootUrl', 'http://localhost:3000/v1')
+  .use('options', {
+    headers: {
+      Accept: 'application/json',
+    },
+  });

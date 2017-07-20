@@ -9,7 +9,7 @@ export const findAll = form => (dispatch, getState) => {
   if (typeof model === 'string') {
     dispatch(
       // TODO actually consider form in where
-      api.actions.records({ model: pluralize(model), where: { row: 1 } }),
+      api.actions.records({ model: pluralize(model) }),
     );
   }
 };
