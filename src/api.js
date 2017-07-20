@@ -17,4 +17,8 @@ export default reduxApi({
   model: {
     url: `http://localhost:3000/v1/describe/:model`,
   },
+  records: {
+    url: `http://localhost:3000/v1/find/:model`,
+    transformer: data => (data ? data.result : []),
+  },
 }).use('fetch', adapterFetch(fetch)); // it's necessary to point using REST backend
