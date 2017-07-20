@@ -8,7 +8,12 @@ const mapStateToProps = ({ models: { data } }) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { init: dispatch(api.actions.models()) };
+  return {
+    handleChange: model => {
+      console.log('change', model);
+    },
+    init: dispatch(api.actions.models()),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModelSelector);

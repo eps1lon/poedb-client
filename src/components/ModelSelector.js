@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Form, Control } from 'react-redux-form';
 
 class ModelSelector extends Component {
   render() {
-    const { models } = this.props;
+    const { handleChange, models } = this.props;
+
     return (
-      <ul>
-        {models.map(name =>
-          <li key={name}>
-            {name}
-          </li>,
-        )}
-      </ul>
+      <Form model="model_selector" onChange={handleChange}>
+        <label>model:</label>
+        <Control.select model=".model">
+          {models.map(name =>
+            <option key={name} value={name}>
+              {name}
+            </option>,
+          )}
+        </Control.select>
+      </Form>
     );
   }
 }
