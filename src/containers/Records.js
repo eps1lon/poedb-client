@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { findAll } from '../actions/records';
+import { setPagination } from '../actions/table';
 import Records from '../components/Records';
 
 const mapStateToProps = state => {
@@ -19,7 +19,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onFetchData: ({ page, page_size }) =>
-      dispatch(findAll({ page, page_size })),
+      dispatch(setPagination({ page, page_size })),
   };
 };
 

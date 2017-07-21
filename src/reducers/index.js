@@ -4,12 +4,14 @@ import { createForms } from 'react-redux-form';
 import api from '../api';
 import forms from './forms';
 import header from './header';
+import table from './table';
 
 // empty state for now
 const rootReducer = combineReducers({
   ...api.reducers,
   ...createForms(forms),
   header,
+  table,
 });
 
 export default rootReducer;
