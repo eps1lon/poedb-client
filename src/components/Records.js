@@ -6,14 +6,15 @@ import 'react-table/react-table.css';
 
 class Records extends Component {
   render() {
-    const { header, records } = this.props;
+    const { header, loading, records } = this.props;
 
-    return <ReactTable data={records} columns={header} />;
+    return <ReactTable data={records} loading={loading} columns={header} />;
   }
 }
 
 Records.propTypes = {
   header: PropTypes.arrayOf(PropTypes.object),
+  loading: PropTypes.bool,
   records: PropTypes.arrayOf(PropTypes.object),
 };
 
