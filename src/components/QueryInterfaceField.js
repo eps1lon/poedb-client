@@ -6,7 +6,7 @@ import QueryInterfaceControl from './QueryInterfaceControl';
 
 class QueryInterfaceField extends Component {
   render() {
-    const { label, name, type } = this.props;
+    const { Label, name, type } = this.props;
     const model = `.${name}`;
     const id = `query-interface-field-${name}`;
 
@@ -14,7 +14,7 @@ class QueryInterfaceField extends Component {
       <div className="query-interface-field">
         <Control.checkbox model={`${model}.enabled`} />
         <label htmlFor={id}>
-          {label}
+          {Label}
         </label>
         <QueryInterfaceControl type={type} model={`${model}.value`} id={id} />
       </div>
@@ -23,7 +23,7 @@ class QueryInterfaceField extends Component {
 }
 
 QueryInterfaceField.propTypes = {
-  label: PropTypes.string.isRequired, // TODO allow elements
+  Label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };

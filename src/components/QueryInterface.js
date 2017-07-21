@@ -23,7 +23,7 @@ class QueryInterface extends Component {
               <QueryInterfaceField
                 key={name}
                 name={name}
-                label={name}
+                Label={`${name}: `}
                 type={type}
               />
             );
