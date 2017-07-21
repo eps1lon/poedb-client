@@ -14,7 +14,7 @@ class QueryInterfaceField extends Component {
       <div className="query-interface-field">
         <Control.checkbox model={`${model}.enabled`} />
         <label htmlFor={id}>
-          {label}({type})
+          {label}
         </label>
         <QueryInterfaceControl type={type} model={`${model}.value`} id={id} />
       </div>
