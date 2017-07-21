@@ -16,7 +16,7 @@ export default reduxApi({
   },
   records: {
     url: `/find/:model`,
-    transformer: data => (data ? data.result : []),
+    transformer: data => (data ? data : { result: [], pages: -1 }),
     prefetch: [
       ({ action, dispatch, getState }, next) => {
         dispatch(displayHeader(getDescription(getState())));
