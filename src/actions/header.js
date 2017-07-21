@@ -17,7 +17,14 @@ const buildHeader = description => {
       };
     });
 
-    return header;
+    const belongs_to = Object.keys(description.belongsTo).map(assoc => {
+      return {
+        accessor: `${assoc}.row`,
+        Header: humanize(assoc),
+      };
+    });
+
+    return [...header, ...belongs_to];
   }
 };
 
