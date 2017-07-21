@@ -24,6 +24,7 @@ class Records extends Component {
         onFetchData={onFetchData}
         defaultPageSize={20}
         pages={pages}
+        sortable={false}
       />
     );
   }
