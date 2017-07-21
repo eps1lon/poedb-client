@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Control } from 'react-redux-form';
 
-import QueryInterfaceControl from './QueryInterfaceControl';
+import QueryInterfaceOperators from './QueryInterfaceOperators';
 
 class QueryInterfaceField extends Component {
   render() {
@@ -16,7 +16,8 @@ class QueryInterfaceField extends Component {
         <label htmlFor={id}>
           {Label}
         </label>
-        <QueryInterfaceControl type={type} model={`${model}.value`} id={id} />
+        <QueryInterfaceOperators type={type} model={`${model}.operator`} />
+        <Control.text model={`${model}.value`} id={id} />
       </div>
     );
   }
