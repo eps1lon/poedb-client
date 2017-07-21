@@ -9,15 +9,19 @@ import registerServiceWorker from './registerServiceWorker';
 
 const store = configureStore();
 
-class Main extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
-  }
-}
+const renderWithStore = store => App =>
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root'),
+  );
 
-ReactDOM.render(<Main />, document.getElementById('root'));
+renderWithStore(store)(App);
 registerServiceWorker();
+
+if (module.hot) {
+  module.hot.accept('./components/App', () => {
+    renderWithStore(store)(App);
+  });
+}
