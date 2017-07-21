@@ -14,6 +14,7 @@ import QueryInterfaceField from './QueryInterfaceField';
 class QueryInterface extends Component {
   render() {
     const { attributes, onSubmit } = this.props;
+
     return (
       <Form model="query_interface" onSubmit={onSubmit}>
         <ul>
