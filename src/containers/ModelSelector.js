@@ -13,7 +13,8 @@ const mapDispatchToProps = dispatch => {
     newModels: value => {
       dispatch(actions.change('model_selector.model', value));
     },
-    init: dispatch(api.actions.models()),
+    // init
+    onMount: () => dispatch(api.actions.models()),
   };
 };
 

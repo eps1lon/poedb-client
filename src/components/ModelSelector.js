@@ -7,6 +7,13 @@ class ModelSelector extends Component {
     return this.props.models[0];
   }
 
+  componentDidMount() {
+    const { onMount } = this.props;
+    if (onMount) {
+      onMount();
+    }
+  }
+
   componentDidUpdate() {
     const { newModels } = this.props;
     // explicitly call change here because setting a defaultValue or value
@@ -42,6 +49,7 @@ class ModelSelector extends Component {
 ModelSelector.propTypes = {
   models: PropTypes.arrayOf(PropTypes.string).isRequired,
   newModels: PropTypes.func,
+  onMount: PropTypes.func,
 };
 
 export default ModelSelector;
