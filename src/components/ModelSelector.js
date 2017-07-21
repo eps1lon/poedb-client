@@ -9,7 +9,7 @@ class ModelSelector extends Component {
     return (
       <Form model="model_selector" onChange={handleChange}>
         <label>model:</label>
-        <Control.select model=".model">
+        <Control.select model=".model" defaultValue={0}>
           {models.map(name =>
             <option key={name} value={name}>
               {name}
