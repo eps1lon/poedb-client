@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { actions } from 'react-redux-form';
 
 import api from '../api';
 import ModelSelector from '../components/ModelSelector';
@@ -9,10 +10,8 @@ const mapStateToProps = ({ models: { data } }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleChange: ({ model }) => {
-      if (model) {
-        dispatch(api.actions.model({ model }));
-      }
+    newModels: value => {
+      dispatch(actions.change('model_selector.model', value));
     },
     init: dispatch(api.actions.models()),
   };

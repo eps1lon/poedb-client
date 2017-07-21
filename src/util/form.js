@@ -67,3 +67,8 @@ export const whereObjectBuilder = form => {
     }
   }, {});
 };
+
+export const changePattern = ({ type }) => type === 'rrf/change';
+
+export const modelChangePattern = model => action =>
+  changePattern(action) && action.model === model;
