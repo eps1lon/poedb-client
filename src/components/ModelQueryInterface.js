@@ -4,6 +4,14 @@ import PropTypes from 'prop-types';
 import QueryInterface from './QueryInterface';
 
 class ModelQueryInterface extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: true,
+    };
+  }
+
   handleSubmit(form) {
     const { onSubmit } = this.props;
     if (onSubmit) {
@@ -11,9 +19,16 @@ class ModelQueryInterface extends Component {
     }
   }
 
+  toggleVisible() {
+    this.setState({ visible: !this.state.visible });
+  }
+
   render() {
     const { loading, model } = this.props;
+    const { visible } = this.state;
+
     const handleSubmit = this.handleSubmit.bind(this);
+    const toggleVisible = this.toggleVisible.bind(this);
 
     if (loading || !model) {
       return <div>loading...</div>;
@@ -21,8 +36,15 @@ class ModelQueryInterface extends Component {
 
     return (
       <fieldset>
-        <legend>Search</legend>
-        <QueryInterface attributes={model.attributes} onSubmit={handleSubmit} />
+        <legend>
+          Search<button onClick={toggleVisible}>{visible ? '-' : '+'}</button>
+        </legend>
+        <div className={visible ? 'visible' : 'hidden'}>
+          <QueryInterface
+            attributes={model.attributes}
+            onSubmit={handleSubmit}
+          />
+        </div>
       </fieldset>
     );
   }
