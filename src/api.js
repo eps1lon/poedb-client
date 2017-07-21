@@ -1,7 +1,8 @@
 import reduxApi, { transformers } from 'redux-api';
 import adapterFetch from 'redux-api/lib/adapters/fetch';
 
-import { findAll } from './actions/records';
+import { displayHeader } from './actions/header';
+import { getDescription } from './selectors/model';
 
 export default reduxApi({
   // complex endpoint description
@@ -12,15 +13,17 @@ export default reduxApi({
   },
   model: {
     url: `/describe/:model`,
-    postfetch: [
-      ({ dispatch }) => {
-        dispatch(findAll());
-      },
-    ],
   },
   records: {
     url: `/find/:model`,
     transformer: data => (data ? data.result : []),
+    prefetch: [
+      ({ action, dispatch, getState }, next) => {
+        dispatch(displayHeader(getDescription(getState())));
+
+        next();
+      },
+    ],
   },
 })
   .use('fetch', adapterFetch(fetch))

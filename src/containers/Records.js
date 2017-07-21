@@ -1,14 +1,12 @@
 import { connect } from 'react-redux';
 
 import Records from '../components/Records';
-import { buildHeader } from '../selectors/model';
 
 const mapStateToProps = state => {
-  const { records: { data, loading } } = state;
+  const { records: { data }, header: { columns } } = state;
   return {
-    header: buildHeader(state),
+    header: columns,
     records: data,
-    loading_records: loading,
   };
 };
 
