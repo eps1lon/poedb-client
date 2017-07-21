@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import QueryInterface from './QueryInterface';
+import QueryInterface from './QueryInterface/';
 
 class ModelQueryInterface extends Component {
   constructor(props) {

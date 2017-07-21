@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Control } from 'react-redux-form';
 
-import QueryInterfaceOperators from './QueryInterfaceOperators';
+import Operators from './Operators';
 
-class QueryInterfaceField extends Component {
+class Field extends Component {
   render() {
     const { Label, name, type } = this.props;
     const model = `.${name}`;
@@ -16,17 +16,17 @@ class QueryInterfaceField extends Component {
         <label htmlFor={id}>
           {Label}
         </label>
-        <QueryInterfaceOperators type={type} model={`${model}.operator`} />
+        <Operators type={type} model={`${model}.operator`} />
         <Control.text model={`${model}.value`} id={id} />
       </div>
     );
   }
 }
 
-QueryInterfaceField.propTypes = {
+Field.propTypes = {
   Label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
 
-export default QueryInterfaceField;
+export default Field;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-redux-form';
 
-import QueryInterfaceField from './QueryInterfaceField';
+import Field from './Field';
 
 /**
  * TODO since these are dynamic forms their values start off as undefined
@@ -20,12 +20,7 @@ class QueryInterface extends Component {
         <ul>
           {Object.entries(attributes).map(([name, type]) => {
             return (
-              <QueryInterfaceField
-                key={name}
-                name={name}
-                Label={`${name}: `}
-                type={type}
-              />
+              <Field key={name} name={name} Label={`${name}: `} type={type} />
             );
           })}
         </ul>

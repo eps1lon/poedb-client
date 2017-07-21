@@ -25,7 +25,7 @@ const operators = type => {
   ];
 };
 
-const QueryInterfaceOperators = ({ type, model }) => {
+const Operators = ({ type, model }) => {
   return (
     <Control.select model={model}>
       {operators(type).map(({ operator, human }) => {
@@ -39,9 +39,9 @@ const QueryInterfaceOperators = ({ type, model }) => {
   );
 };
 
-QueryInterfaceOperators.propTypes = {
+Operators.propTypes = {
   model: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
 
-export default QueryInterfaceOperators;
+export default Operators;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Control } from 'react-redux-form';
+import { Control as FormControl } from 'react-redux-form';
 
 const isFlag = type => type === 'tinyint(1)';
 const isText = type => type === 'text';
@@ -12,19 +12,19 @@ const numberProps = type => {
   };
 };
 
-const QueryInterfaceControl = ({ type, ...props }) => {
+const Control = ({ type, ...props }) => {
   const normalized_type = type.toLowerCase();
 
   if (isText(normalized_type)) {
-    return <Control.text {...props} />;
+    return <FormControl.text {...props} />;
   } else if (isFlag(normalized_type)) {
-    return <Control.checkbox {...props} />;
+    return <FormControl.checkbox {...props} />;
   } else if (isDateTime(normalized_type)) {
     const control_props = {
       ...props,
       type: 'datetime-local',
     };
-    return <Control.input {...control_props} />;
+    return <FormControl.input {...control_props} />;
   } else {
     const control_props = {
       ...props,
@@ -32,12 +32,12 @@ const QueryInterfaceControl = ({ type, ...props }) => {
       type: 'number',
     };
 
-    return <Control.input {...control_props} />;
+    return <FormControl.input {...control_props} />;
   }
 };
 
-QueryInterfaceControl.propTypes = {
+Control.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-export default QueryInterfaceControl;
+export default Control;
