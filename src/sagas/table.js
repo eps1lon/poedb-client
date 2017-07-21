@@ -13,7 +13,8 @@ export function* watchDirtyTable() {
     const where = yield select(getWhereObject);
     const { page, page_size } = yield select(state => state.table);
 
-    if (typeof model === 'string') {
+    // on init model is an empty so dont fire a request
+    if (typeof model === 'string' && model.length > 0) {
       yield put(findAll({ model, where, page, page_size }));
     }
   });
