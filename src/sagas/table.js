@@ -1,9 +1,14 @@
 import { takeEvery, select, put } from 'redux-saga/effects';
 
-import { SET_PAGINATION, QUERY_SUBMIT } from '../actions/table';
+import { DISPLAY_HEADER } from '../actions/header';
+import {
+  SET_PAGINATION,
+  QUERY_SUBMIT,
+  setColumnVisibilities,
+} from '../actions/table';
 import { findAll } from '../actions/records';
 import { getWhereObject } from '../selectors/form';
-import { selectedModelName } from '../selectors/model';
+import { colCount, selectedModelName } from '../selectors/model';
 
 export function* watchDirtyTable() {
   // we simply assume that new data is needed when this actions are dispatched
@@ -17,5 +22,14 @@ export function* watchDirtyTable() {
     if (typeof model === 'string' && model.length > 0) {
       yield put(findAll({ model, where, page, page_size }));
     }
+  });
+}
+
+export function* resetColumnVisibilityOnNewHeader() {
+  yield takeEvery(DISPLAY_HEADER, function*() {
+    const col_count = yield select(colCount);
+
+    // show all by default
+    yield put(setColumnVisibilities(...Array(col_count).fill(true)));
   });
 }

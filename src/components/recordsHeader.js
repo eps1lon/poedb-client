@@ -35,12 +35,20 @@ const buildMany = (many = {}) => {
  * @param {Object} model api/describe/:model returnval 
  * @return a header from the currently queried model consumeable by react-table
  */
-const recordsHeader = ({ attributes, belongsTo, belongsToMany }) => {
+const recordsHeader = (
+  { attributes, belongsTo, belongsToMany },
+  show_columns,
+) => {
   const header = buildHeader(attributes);
   const belongs_to = buildBelongsTo(belongsTo);
   const many = buildMany(belongsToMany);
 
-  return [...belongs_to, ...many, ...header];
+  return [...belongs_to, ...many, ...header].map((column, i) => {
+    return {
+      ...column,
+      show: show_columns[i],
+    };
+  });
 };
 
 export default recordsHeader;

@@ -4,6 +4,13 @@ import adapterFetch from 'redux-api/lib/adapters/fetch';
 import { displayHeader } from './actions/header';
 import { getDescription } from './selectors/model';
 
+const empty_model = {
+  attributes: {},
+  belongsTo: {},
+  belongsToMayn: {},
+  hasMany: {},
+};
+
 export default reduxApi({
   // complex endpoint description
   models: {
@@ -13,7 +20,7 @@ export default reduxApi({
   },
   model: {
     url: `/describe/:model`,
-    transformer: data => (data ? data.description : {}),
+    transformer: data => (data ? data.description : empty_model),
   },
   records: {
     url: `/find/:model`,

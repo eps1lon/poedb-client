@@ -7,12 +7,14 @@ const mapStateToProps = state => {
   const {
     records: { data: { result, pages }, loading },
     model: { data },
+    table: { show_columns },
   } = state;
   return {
     loading,
     model: data,
     pages,
     records: result,
+    show_columns,
   };
 };
 

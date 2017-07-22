@@ -14,14 +14,14 @@ class Records extends Component {
   }
 
   render() {
-    const { loading, model, pages, records } = this.props;
+    const { loading, model, pages, records, show_columns } = this.props;
     const onFetchData = this.handleFetch.bind(this);
 
     return (
       <ReactTable
         data={records}
         loading={loading}
-        columns={recordsHeader(model)}
+        columns={recordsHeader(model, show_columns)}
         manual
         onFetchData={onFetchData}
         defaultPageSize={20}
@@ -38,6 +38,7 @@ Records.propTypes = {
   onFetchData: PropTypes.func.isRequired,
   pages: PropTypes.number,
   records: PropTypes.arrayOf(PropTypes.object),
+  show_columns: PropTypes.arrayOf(PropTypes.bool),
 };
 
 export default Records;
