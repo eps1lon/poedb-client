@@ -13,6 +13,7 @@ export default reduxApi({
   },
   model: {
     url: `/describe/:model`,
+    transformer: data => (data ? data.description : {}),
   },
   records: {
     url: `/find/:model`,

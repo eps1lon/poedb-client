@@ -6,11 +6,11 @@ import Records from '../components/Records';
 const mapStateToProps = state => {
   const {
     records: { data: { result, pages }, loading },
-    header: { columns },
+    model: { data },
   } = state;
   return {
-    header: columns,
     loading,
+    model: data,
     pages,
     records: result,
   };

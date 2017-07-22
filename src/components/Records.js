@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 
+import recordsHeader from './recordsHeader';
+
 import 'react-table/react-table.css';
 
 class Records extends Component {
@@ -12,14 +14,14 @@ class Records extends Component {
   }
 
   render() {
-    const { header, loading, pages, records } = this.props;
+    const { loading, model, pages, records } = this.props;
     const onFetchData = this.handleFetch.bind(this);
 
     return (
       <ReactTable
         data={records}
         loading={loading}
-        columns={header}
+        columns={recordsHeader(model)}
         manual
         onFetchData={onFetchData}
         defaultPageSize={20}
@@ -31,7 +33,7 @@ class Records extends Component {
 }
 
 Records.propTypes = {
-  header: PropTypes.arrayOf(PropTypes.object),
+  model: PropTypes.object,
   loading: PropTypes.bool,
   onFetchData: PropTypes.func.isRequired,
   pages: PropTypes.number,
