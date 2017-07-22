@@ -19,12 +19,20 @@ const buildHeader = description => {
 
     const belongs_to = Object.keys(description.belongsTo).map(assoc => {
       return {
-        accessor: `${assoc}.row`,
         Header: humanize(assoc),
+        accessor: `${assoc}.row`,
       };
     });
 
-    return [...header, ...belongs_to];
+    const many = Object.keys(description.belongsToMany).map(assoc => {
+      return {
+        Header: humanize(assoc),
+        id: assoc,
+        accessor: row => row[assoc].map(({ row }) => row).join(','),
+      };
+    });
+
+    return [...many, ...header, ...belongs_to];
   }
 };
 
