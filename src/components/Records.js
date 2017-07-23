@@ -4,6 +4,8 @@ import ReactTable from 'react-table';
 
 import 'react-table/react-table.css';
 
+import { isUnknown } from '../util/recordsHeader';
+
 class Records extends Component {
   handleFetch({ pageSize, page }, instance) {
     // ReactTable starts with 0 but since pagination is all about
@@ -19,7 +21,12 @@ class Records extends Component {
       <ReactTable
         data={records}
         loading={loading}
-        columns={columns}
+        columns={columns.map(column => {
+          return {
+            ...column,
+            minWidth: isUnknown(column.accessor) ? 20 : 100,
+          };
+        })}
         manual
         onFetchData={onFetchData}
         defaultPageSize={20}

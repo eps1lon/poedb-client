@@ -10,7 +10,7 @@ const intOrDefault = (val, def) => {
   }
 };
 
-const isUnknown = attribute_name =>
+export const isUnknown = attribute_name =>
   /(Flag|Unknown|Data|Key|Keys)\d*$/i.test(attribute_name);
 
 /**
