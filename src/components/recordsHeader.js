@@ -106,12 +106,6 @@ const recordsHeader = (
 
   return (
     [...belongs_to, ...many, ...header]
-      .map((column, i) => {
-        return {
-          ...column,
-          show: show_columns[i],
-        };
-      })
       // sortBy order[0], order[1]
       .sort((a, b) => {
         if (a.$order[0] === b.$order[0]) {
@@ -119,6 +113,12 @@ const recordsHeader = (
         } else {
           return a.$order[0] - b.$order[0];
         }
+      })
+      .map((column, i) => {
+        return {
+          ...column,
+          show: show_columns[i],
+        };
       })
   );
 };
