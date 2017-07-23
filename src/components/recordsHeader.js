@@ -10,6 +10,9 @@ const intOrDefault = (val, def) => {
   }
 };
 
+const isUnknown = attribute_name =>
+  /(Flag|Unknown|Data|Key|Keys)\d*$/i.test(attribute_name);
+
 /**
  * order is 
  * -1, parseInt(orig_order, 10), unknown semantics, undefined, orig_order which is not castable to int
@@ -29,7 +32,7 @@ const order = (name, { orig_order }) => {
   } else if (orig_order === undefined) {
     order.push(END);
     // those are attributes whose semantics are unknown
-  } else if (/(Flag|Unknown|Data|Key|Keys)\d*$/i.test(name)) {
+  } else if (isUnknown(name)) {
     order.push(END - 1);
   } else {
     order.push(intOrDefault(orig_order, Number.POSITIVE_INFINITY));
@@ -43,11 +46,13 @@ const order = (name, { orig_order }) => {
 };
 
 const buildHeader = (attributes = {}) => {
-  return Object.keys(attributes).map(attribute => {
+  return Object.entries(attributes).map(([name, props]) => {
     return {
-      accessor: attribute,
-      Header: humanize(attribute),
-      $order: order(attribute, attributes[attribute]),
+      accessor: name,
+      Header: humanize(name),
+      // "collapse" columns with unknown semantics
+      minWidth: isUnknown(name) ? 20 : 100,
+      $order: order(name, props),
     };
   });
 };
