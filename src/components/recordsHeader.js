@@ -1,4 +1,3 @@
-import React from 'react';
 import { humanize } from 'inflection';
 
 const intOrDefault = (val, def) => {
@@ -75,7 +74,8 @@ const buildMany = (many = {}) => {
 };
 
 /**
- * this is not actualy a component but since it has some jsx parts we keep it here
+ * this is not actualy a component but since it has (or rather can have)
+ * some jsx parts we keep it here
  * 
  * @param {Object} model api/describe/:model returnval 
  * @return a header from the currently queried model consumeable by react-table
