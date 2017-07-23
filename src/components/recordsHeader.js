@@ -110,7 +110,7 @@ const recordsHeader = (
       })
       // sortBy order[0], order[1]
       .sort((a, b) => {
-        if (a.$order[0] == b.$order[0]) {
+        if (a.$order[0] === b.$order[0]) {
           return a.$order[1] - b.$order[1];
         } else {
           return a.$order[0] - b.$order[0];
