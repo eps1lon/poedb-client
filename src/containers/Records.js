@@ -7,7 +7,7 @@ const mapStateToProps = state => {
   const {
     header: { model, dirty },
     records: { data: { result, pages }, loading },
-    table: { show_columns },
+    show_columns,
   } = state;
   return {
     loading,
