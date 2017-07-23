@@ -67,7 +67,18 @@ const buildMany = (many = {}) => {
     return {
       Header: humanize(assoc),
       id: assoc,
-      accessor: row => row[assoc].map(({ row }) => row).join(','),
+      accessor: row => {
+        const associated = row[assoc];
+
+        if (Array.isArray(associated)) {
+          return associated.map(({ row }) => row).join(',');
+        } else {
+          console.warn(
+            `there was no array given for habtm ${assoc} in row ${row.row}`,
+          );
+          return undefined;
+        }
+      },
       $order: order(assoc, many[assoc]),
     };
   });
