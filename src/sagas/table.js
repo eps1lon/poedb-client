@@ -1,14 +1,11 @@
+import { actions } from 'react-redux-form';
 import { takeEvery, select, put } from 'redux-saga/effects';
 
 import { DISPLAY_HEADER } from '../actions/header';
-import {
-  SET_PAGINATION,
-  QUERY_SUBMIT,
-  setColumnVisibilities,
-} from '../actions/table';
+import { SET_PAGINATION, QUERY_SUBMIT } from '../actions/table';
 import { findAll } from '../actions/records';
 import { getWhereObject } from '../selectors/form';
-import { colCount, selectedModelName } from '../selectors/model';
+import { selectedModelName } from '../selectors/model';
 
 export function* watchDirtyTable() {
   // we simply assume that new data is needed when this actions are dispatched
@@ -25,11 +22,12 @@ export function* watchDirtyTable() {
   });
 }
 
-export function* resetColumnVisibilityOnNewHeader() {
-  yield takeEvery(DISPLAY_HEADER, function*() {
-    const col_count = yield select(colCount);
-
-    // show all by default
-    yield put(setColumnVisibilities(...Array(col_count).fill(true)));
+export function* watchHeaderChange() {
+  yield takeEvery(DISPLAY_HEADER, function*({ payload: { columns } }) {
+    yield put(
+      actions.change('show_columns', Array(columns.length).fill(true), {
+        silent: true,
+      }),
+    );
   });
 }

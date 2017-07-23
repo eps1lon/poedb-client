@@ -49,9 +49,7 @@ const buildHeader = (attributes = {}) => {
   return Object.entries(attributes).map(([name, props]) => {
     return {
       accessor: name,
-      Header: humanize(name),
-      // "collapse" columns with unknown semantics
-      minWidth: isUnknown(name) ? 20 : 100,
+      label: humanize(name),
       $order: order(name, props),
     };
   });
@@ -60,7 +58,7 @@ const buildHeader = (attributes = {}) => {
 const buildBelongsTo = (belongs_to = {}) => {
   return Object.keys(belongs_to).map(assoc => {
     return {
-      Header: humanize(assoc),
+      label: humanize(assoc),
       accessor: `${assoc}.row`,
       $order: order(assoc, belongs_to[assoc]),
     };
@@ -70,7 +68,7 @@ const buildBelongsTo = (belongs_to = {}) => {
 const buildMany = (many = {}) => {
   return Object.keys(many).map(assoc => {
     return {
-      Header: humanize(assoc),
+      label: humanize(assoc),
       id: assoc,
       accessor: row => {
         const associated = row[assoc];
@@ -90,16 +88,10 @@ const buildMany = (many = {}) => {
 };
 
 /**
- * this is not actualy a component but since it has (or rather can have)
- * some jsx parts we keep it here
- * 
  * @param {Object} model api/describe/:model returnval 
- * @return a header from the currently queried model consumeable by react-table
+ * @return a header from the currently queried model
  */
-const recordsHeader = (
-  { attributes, belongsTo, belongsToMany },
-  show_columns,
-) => {
+const recordsHeader = ({ attributes, belongsTo, belongsToMany }) => {
   const header = buildHeader(attributes);
   const belongs_to = buildBelongsTo(belongsTo);
   const many = buildMany(belongsToMany);
@@ -113,12 +105,6 @@ const recordsHeader = (
         } else {
           return a.$order[0] - b.$order[0];
         }
-      })
-      .map((column, i) => {
-        return {
-          ...column,
-          show: show_columns[i],
-        };
       })
   );
 };

@@ -9,7 +9,7 @@ import api from '../api';
  */
 
 const initial = {
-  model: {},
+  columns: [],
   dirty: false,
 };
 
@@ -26,7 +26,7 @@ const header = (state = initial, { type, payload }) => {
     case DISPLAY_HEADER:
       return {
         ...state,
-        model: payload.model,
+        columns: payload.columns,
         dirty: false,
       };
     default:
