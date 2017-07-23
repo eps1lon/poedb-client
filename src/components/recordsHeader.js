@@ -104,7 +104,6 @@ const recordsHeader = (
       .map((column, i) => {
         return {
           ...column,
-          Header: `${column.Header}(${column.$order})`,
           show: show_columns[i],
         };
       })
