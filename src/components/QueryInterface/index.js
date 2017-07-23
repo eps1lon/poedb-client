@@ -18,7 +18,7 @@ class QueryInterface extends Component {
     return (
       <Form model="query_interface" onSubmit={onSubmit}>
         <ul>
-          {Object.entries(attributes).map(([name, type]) => {
+          {Object.entries(attributes).map(([name, { type }]) => {
             return (
               <Field key={name} name={name} Label={`${name}: `} type={type} />
             );
