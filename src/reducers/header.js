@@ -1,4 +1,5 @@
 import { DISPLAY_HEADER } from '../actions/header';
+import api from '../api';
 
 /**
  * this is just a cached copy of state.model
@@ -9,14 +10,24 @@ import { DISPLAY_HEADER } from '../actions/header';
 
 const initial = {
   model: {},
+  dirty: false,
 };
 
 const header = (state = initial, { type, payload }) => {
   switch (type) {
+    // new records should trigger the write through of the header
+    // we could skip this dirty bit and just have inconsistent records-header
+    // for a couple of ms but we keep it clean and wait for the display header
+    case api.events.records.actionSuccess:
+      return {
+        ...state,
+        dirty: true,
+      };
     case DISPLAY_HEADER:
       return {
         ...state,
         model: payload.model,
+        dirty: false,
       };
     default:
       return state;

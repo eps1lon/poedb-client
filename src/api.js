@@ -25,11 +25,9 @@ export default reduxApi({
   records: {
     url: `/find/:model`,
     transformer: data => (data ? data : { result: [], pages: -1 }),
-    prefetch: [
-      ({ action, dispatch, getState }, next) => {
+    postfetch: [
+      ({ action, dispatch, getState }) => {
         dispatch(displayHeader(getDescription(getState())));
-
-        next();
       },
     ],
   },

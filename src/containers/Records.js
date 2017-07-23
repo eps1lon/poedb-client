@@ -5,15 +5,15 @@ import Records from '../components/Records';
 
 const mapStateToProps = state => {
   const {
+    header: { model, dirty },
     records: { data: { result, pages }, loading },
-    model: { data },
     table: { show_columns },
   } = state;
   return {
     loading,
-    model: data,
+    model,
     pages,
-    records: result,
+    records: dirty ? [] : result,
     show_columns,
   };
 };
