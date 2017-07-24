@@ -30,12 +30,8 @@ class ModelQueryInterface extends Component {
     const handleSubmit = this.handleSubmit.bind(this);
     const toggleVisible = this.toggleVisible.bind(this);
 
-    if (loading) {
-      return <div>loading...</div>;
-    }
-
     return (
-      <fieldset>
+      <fieldset className={loading ? 'loading' : ''}>
         <legend>
           Search<button onClick={toggleVisible}>{visible ? '-' : '+'}</button>
         </legend>
