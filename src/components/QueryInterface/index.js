@@ -4,6 +4,8 @@ import { Form } from 'react-redux-form';
 
 import Field from './Field';
 
+import './index.css';
+
 /**
  * TODO since these are dynamic forms their values start off as undefined
  * which causes react to initialize them as uncontrolled components
