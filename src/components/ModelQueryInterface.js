@@ -24,13 +24,13 @@ class ModelQueryInterface extends Component {
   }
 
   render() {
-    const { loading, model } = this.props;
+    const { loading, query_interface } = this.props;
     const { visible } = this.state;
 
     const handleSubmit = this.handleSubmit.bind(this);
     const toggleVisible = this.toggleVisible.bind(this);
 
-    if (loading || !model) {
+    if (loading) {
       return <div>loading...</div>;
     }
 
@@ -41,8 +41,8 @@ class ModelQueryInterface extends Component {
         </legend>
         <div className={visible ? 'visible' : 'hidden'}>
           <QueryInterface
-            attributes={model.attributes}
             onSubmit={handleSubmit}
+            attributes={query_interface.attributes}
           />
         </div>
       </fieldset>
@@ -53,7 +53,7 @@ class ModelQueryInterface extends Component {
 ModelQueryInterface.propTypes = {
   onSubmit: PropTypes.func,
   loading: PropTypes.bool,
-  model: PropTypes.object,
+  query_interface: PropTypes.object,
 };
 
 export default ModelQueryInterface;

@@ -22,7 +22,13 @@ class QueryInterface extends Component {
         <ul>
           {Object.entries(attributes).map(([name, { type }]) => {
             return (
-              <Field key={name} name={name} Label={`${name}: `} type={type} />
+              <Field
+                key={name}
+                name={name}
+                model={`.attributes.${name}`}
+                Label={`${name}: `}
+                type={type}
+              />
             );
           })}
         </ul>

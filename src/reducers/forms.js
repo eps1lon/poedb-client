@@ -1,6 +1,9 @@
 const forms = {
   model_selector: { model: '' },
-  query_interface: {},
+  query_interface: {
+    attributes: {},
+    belongsTo: {},
+  },
   show_columns: [],
 };
 

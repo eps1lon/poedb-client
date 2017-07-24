@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { querySubmit } from '../actions/table';
 import ModelQueryInterface from '../components/ModelQueryInterface';
 
-const mapStateToProps = ({ model: { data, loading } }) => {
-  return { model: data, loading };
+const mapStateToProps = ({ model: { loading }, query_interface }) => {
+  return { query_interface, loading };
 };
 
 const mapDispatchToProps = dispatch => {
