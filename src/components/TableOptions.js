@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Control } from 'react-redux-form';
 
 const propTypes = {
-  show_columns: PropTypes.arrayOf(PropTypes.bool).isRequired,
+  show_columns: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 class TableOptions extends Component {
@@ -11,9 +11,25 @@ class TableOptions extends Component {
     const { show_columns } = this.props;
     return (
       <Form model="show_columns">
-        {show_columns.map((show, i) => {
-          return <Control.checkbox key={i} model={`[${i}]`} value={show} />;
-        })}
+        <em>Show columns:</em>
+        <ul>
+          {show_columns.map(({ show, label }, i) => {
+            const id = `show_columns_${i}`;
+            return (
+              <li>
+                <label htmlFor={id}>
+                  {label}
+                </label>
+                <Control.checkbox
+                  id={id}
+                  key={i}
+                  model={`[${i}]`}
+                  value={show}
+                />
+              </li>
+            );
+          })}
+        </ul>
       </Form>
     );
   }
