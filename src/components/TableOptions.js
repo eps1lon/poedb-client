@@ -16,16 +16,11 @@ class TableOptions extends Component {
           {show_columns.map(({ show, label }, i) => {
             const id = `show_columns_${i}`;
             return (
-              <li>
+              <li key={i}>
                 <label htmlFor={id}>
                   {label}
                 </label>
-                <Control.checkbox
-                  id={id}
-                  key={i}
-                  model={`[${i}]`}
-                  value={show}
-                />
+                <Control.checkbox id={id} model={`[${i}]`} value={show} />
               </li>
             );
           })}
