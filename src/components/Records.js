@@ -7,10 +7,14 @@ import 'react-table/react-table.css';
 import { isUnknown } from '../util/recordsHeader';
 
 class Records extends Component {
-  handleFetch({ pageSize, page }, instance) {
+  handleFetch({ pageSize, page, sorted }, instance) {
     // ReactTable starts with 0 but since pagination is all about
     // making it more human readable we will go with actual page values
-    this.props.onFetchData({ page: page + 1, page_size: pageSize });
+    this.props.onFetchData({
+      page: page + 1,
+      page_size: pageSize,
+      order: sorted,
+    });
   }
 
   render() {
@@ -31,7 +35,7 @@ class Records extends Component {
         onFetchData={onFetchData}
         defaultPageSize={20}
         pages={pages}
-        sortable={false}
+        sortable={true}
       />
     );
   }

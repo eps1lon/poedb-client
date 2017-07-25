@@ -1,14 +1,14 @@
 export const SET_COLUMN_VISIBILITIES = 'TABLE/SET_COLUM_VISIBILITIES';
-export const SET_PAGINATION = 'FILTER/PAGINATE';
+export const FETCH_DATA = 'TABLE/FETCH_DATA';
 export const QUERY_SUBMIT = 'TABLE/QUERY_SUBMIT';
 
 export const querySubmit = () => {
   return { type: QUERY_SUBMIT };
 };
 
-export const setPagination = ({ page, page_size }) => {
+export const fetchData = ({ page, page_size, order }) => {
   return {
-    type: SET_PAGINATION,
-    payload: { page, page_size },
+    type: FETCH_DATA,
+    payload: { page, page_size, order },
   };
 };

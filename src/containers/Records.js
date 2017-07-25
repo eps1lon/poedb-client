@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { setPagination } from '../actions/table';
+import { fetchData } from '../actions/table';
 import Records from '../components/Records';
 
 // format the state shape to a digestible format for react-table
@@ -31,8 +31,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchData: ({ page, page_size }) =>
-      dispatch(setPagination({ page, page_size })),
+    onFetchData: ({ page, page_size, order }) =>
+      dispatch(
+        fetchData({
+          page,
+          page_size,
+          order: order.map(order => [order.id, order.desc ? 'DESC' : 'ASC']),
+        }),
+      ),
   };
 };
 
