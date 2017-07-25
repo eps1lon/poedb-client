@@ -1,7 +1,5 @@
-import { actions } from 'react-redux-form';
 import { takeEvery, select, put } from 'redux-saga/effects';
 
-import { DISPLAY_HEADER } from '../actions/header';
 import { SET_PAGINATION, QUERY_SUBMIT } from '../actions/table';
 import { findAll } from '../actions/records';
 import { getWhereObject } from '../selectors/form';
@@ -19,15 +17,5 @@ export function* watchDirtyTable() {
     if (typeof model === 'string' && model.length > 0) {
       yield put(findAll({ model, where, page, page_size }));
     }
-  });
-}
-
-export function* watchHeaderChange() {
-  yield takeEvery(DISPLAY_HEADER, function*({ payload: { columns } }) {
-    yield put(
-      actions.change('show_columns', Array(columns.length).fill(true), {
-        silent: true,
-      }),
-    );
   });
 }
