@@ -1,6 +1,17 @@
+// @flow
 import { humanize } from 'inflection';
 
-const intOrDefault = (val, def) => {
+export type OrderHierarchy = number[];
+export type ColumnForHeader = {
+  label: string,
+  accessor: string | Function,
+  $order: OrderHierarchy,
+};
+
+export type Column = { orig_order: any };
+export type Attribute = Column;
+
+const intOrDefault = (val: any, def: number): number => {
   const cast = parseInt(val, 10);
 
   if (Number.isNaN(cast)) {
@@ -10,7 +21,7 @@ const intOrDefault = (val, def) => {
   }
 };
 
-export const isUnknown = attribute_name =>
+export const isUnknown = (attribute_name: string): boolean =>
   /(Flag|Unknown|Data|Key|Keys)\d*$/i.test(attribute_name);
 
 /**
@@ -20,7 +31,8 @@ export const isUnknown = attribute_name =>
  * @param {object} param1 props from the api describe endpoint
  * @return {Number} for a sort method
  */
-const order = (name, { orig_order }) => {
+const order = (name: string, column: Column): OrderHierarchy => {
+  const { orig_order } = column;
   const END = Number.MAX_SAFE_INTEGER;
 
   // determine first group order
@@ -45,7 +57,15 @@ const order = (name, { orig_order }) => {
   return order;
 };
 
-const buildHeader = (attributes = {}) => {
+/*FIXME: and this is why i dont want to use flow
+ * i understand why #entries does not work with object as maps
+ * but i dont even have something like type guards where i could check
+ * if it mixed is of a certain type and proceed
+ */
+
+const buildHeader = (
+  attributes: { [string]: Attribute } = {},
+): ColumnForHeader[] => {
   return Object.entries(attributes).map(([name, props]) => {
     return {
       accessor: name,
