@@ -59,20 +59,24 @@ const order = (name: string, column: Column): OrderHierarchy => {
 
 /*FIXME: and this is why i dont want to use flow
  * i understand why #entries does not work with object as maps
- * but i dont even have something like type guards where i could check
- * if it mixed is of a certain type and proceed
+ * i do have some typeguard but this way is actually more dangerous
+ * since it can also return other shapes and it is out of the scope of 
+ * this project to write shape typeguards
+ * also using the orig name cause flow to throw
  */
 
-const buildHeader = (
-  attributes: { [string]: Attribute } = {},
-): ColumnForHeader[] => {
-  return Object.entries(attributes).map(([name, props]) => {
-    return {
-      accessor: name,
-      label: humanize(name),
-      $order: order(name, props),
-    };
-  });
+const what = (attributes: { [string]: Attribute } = {}): ColumnForHeader[] => {
+  return Object.entries(attributes)
+    .map(([name, props]) => {
+      if (props && typeof props === 'object') {
+        return {
+          accessor: name,
+          label: humanize(name),
+          $order: order(name, props),
+        };
+      }
+    })
+    .filter(Boolean);
 };
 
 const buildBelongsTo = (belongs_to = {}) => {
