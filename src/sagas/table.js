@@ -1,9 +1,11 @@
 import { takeEvery, select, put } from 'redux-saga/effects';
 
+import api from '../api';
+import { displayHeader } from '../actions/header';
 import { FETCH_DATA, QUERY_SUBMIT } from '../actions/table';
 import { findAll } from '../actions/records';
 import { getWhereObject } from '../selectors/form';
-import { selectedModelName } from '../selectors/model';
+import { getDescription, selectedModelName } from '../selectors/model';
 
 export function* watchDirtyTable() {
   // we simply assume that new data is needed when this actions are dispatched
@@ -17,5 +19,12 @@ export function* watchDirtyTable() {
     if (typeof model === 'string' && model.length > 0) {
       yield put(findAll({ model, where, page, page_size, order }));
     }
+  });
+}
+
+export function* writeThroughModel() {
+  yield takeEvery(api.events.records.actionSuccess, function*() {
+    const description = yield select(getDescription);
+    yield put(displayHeader(description));
   });
 }

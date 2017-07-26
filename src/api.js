@@ -1,9 +1,6 @@
 import reduxApi, { transformers } from 'redux-api';
 import adapterFetch from 'redux-api/lib/adapters/fetch';
 
-import { displayHeader } from './actions/header';
-import { getDescription } from './selectors/model';
-
 const empty_model = {
   attributes: {},
   belongsTo: {},
@@ -11,6 +8,15 @@ const empty_model = {
   hasMany: {},
 };
 
+/**
+ * api endpoints
+ * 
+ * usage of pre/postfetch is discourage. the api should have no dependencies to
+ * the store for easier reuse in other redux stores
+ * 
+ * for prefetch you could wrap a thunk action around the api call
+ * for postfetch you could use redux-saga
+ */
 export default reduxApi({
   // complex endpoint description
   models: {
@@ -25,11 +31,6 @@ export default reduxApi({
   records: {
     url: `/find/:model`,
     transformer: data => (data ? data : { result: [], pages: -1 }),
-    postfetch: [
-      ({ action, dispatch, getState }) => {
-        dispatch(displayHeader(getDescription(getState())));
-      },
-    ],
   },
 })
   .use('fetch', adapterFetch(fetch))
