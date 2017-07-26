@@ -29,7 +29,7 @@ export default reduxApi({
     transformer: data => (data ? data.description : empty_model),
   },
   records: {
-    url: `/find/:model`,
+    url: `/find/:model/`,
     transformer: data => (data ? data : { result: [], pages: -1 }),
   },
 })
