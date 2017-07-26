@@ -8,8 +8,18 @@ export type ColumnForHeader = {
   $order: OrderHierarchy,
 };
 
-export type Column = { orig_order: any };
-export type Attribute = Column;
+export type AttributeDescription = { orig_order: any, name: string };
+export type AssocDescription = {
+  name: string,
+  target_name: string,
+  orig_order: number,
+};
+export type ModelDescription = {
+  attributes: AttributeDescription[],
+  belongsTo: AssocDescription[],
+  hasMany: AssocDescription[],
+  belongsToMany: AssocDescription[],
+};
 
 const intOrDefault = (val: any, def: number): number => {
   const cast = parseInt(val, 10);
@@ -31,7 +41,7 @@ export const isUnknown = (attribute_name: string): boolean =>
  * @param {object} param1 props from the api describe endpoint
  * @return {Number} for a sort method
  */
-const order = (name: string, column: Column): OrderHierarchy => {
+const order = (name: string, column: AttributeDescription): OrderHierarchy => {
   const { orig_order } = column;
   const END = Number.MAX_SAFE_INTEGER;
 
@@ -57,65 +67,55 @@ const order = (name: string, column: Column): OrderHierarchy => {
   return order;
 };
 
-/*FIXME: and this is why i dont want to use flow
- * i understand why #entries does not work with object as maps
- * i do have some typeguard but this way is actually more dangerous
- * since it can also return other shapes and it is out of the scope of 
- * this project to write shape typeguards
- * also using the orig name cause flow to throw
- */
-
-const what = (attributes: { [string]: Attribute } = {}): ColumnForHeader[] => {
-  return Object.entries(attributes)
-    .map(([name, props]) => {
-      if (props && typeof props === 'object') {
-        return {
-          accessor: name,
-          label: humanize(name),
-          $order: order(name, props),
-        };
-      }
-    })
-    .filter(Boolean);
-};
-
-const buildBelongsTo = (belongs_to = {}) => {
-  return Object.keys(belongs_to).map(assoc => {
+const buildHeader = (attributes: AttributeDescription[]): ColumnForHeader[] => {
+  return attributes.map(description => {
+    const { name } = description;
     return {
-      label: humanize(assoc),
-      accessor: `${assoc}.row`,
-      $order: order(assoc, belongs_to[assoc]),
+      accessor: name,
+      label: humanize(name),
+      $order: order(name, description),
     };
   });
 };
 
-const buildMany = (many = {}) => {
-  return Object.keys(many).map(assoc => {
+const buildBelongsTo = (
+  belongs_to: AssocDescription[] = [],
+): ColumnForHeader[] => {
+  return belongs_to.map(description => {
+    const { name } = description;
     return {
-      label: humanize(assoc),
-      id: assoc,
+      label: humanize(name),
+      accessor: `${name}.row`,
+      $order: order(name, description),
+    };
+  });
+};
+
+const buildMany = (many: AssocDescription[] = []): ColumnForHeader[] => {
+  return many.map(description => {
+    const { name } = description;
+    return {
+      label: humanize(name),
+      id: name,
       accessor: row => {
-        const associated = row[assoc];
+        const associated = row[name];
 
         if (Array.isArray(associated)) {
           return associated.map(({ row }) => row).join(',');
         } else {
           console.warn(
-            `there was no array given for habtm ${assoc} in row ${row.row}`,
+            `there was no array given for habtm ${name} in row ${row.row}`,
           );
           return undefined;
         }
       },
-      $order: order(assoc, many[assoc]),
+      $order: order(name, description),
     };
   });
 };
 
-/**
- * @param {Object} model api/describe/:model returnval 
- * @return a header from the currently queried model
- */
-const recordsHeader = ({ attributes, belongsTo, belongsToMany }) => {
+const recordsHeader = (description: ModelDescription): ColumnForHeader[] => {
+  const { attributes, belongsTo, belongsToMany } = description;
   const header = buildHeader(attributes);
   const belongs_to = buildBelongsTo(belongsTo);
   const many = buildMany(belongsToMany);
