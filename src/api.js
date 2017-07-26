@@ -34,9 +34,10 @@ export default reduxApi({
   },
 })
   .use('fetch', adapterFetch(fetch))
-  .use('rootUrl', 'http://localhost:3000/v1')
+  .use('rootUrl', 'http://localhost:3000/')
   .use('options', {
     headers: {
       Accept: 'application/json',
+      'Accept-Version': '~1.0',
     },
   });
