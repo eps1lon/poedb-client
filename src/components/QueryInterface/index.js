@@ -20,7 +20,7 @@ class QueryInterface extends Component {
     return (
       <Form model="query_interface" onSubmit={onSubmit}>
         <ul>
-          {Object.entries(attributes).map(([name, { type }]) => {
+          {attributes.map(({ name, type }) => {
             return (
               <Field
                 key={name}
@@ -40,7 +40,7 @@ class QueryInterface extends Component {
 }
 
 QueryInterface.propTypes = {
-  attributes: PropTypes.object.isRequired,
+  attributes: PropTypes.array.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

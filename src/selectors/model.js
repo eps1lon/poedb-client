@@ -12,7 +12,7 @@ export const colCount = state => {
   const { attributes, belongsTo, belongsToMany } = state.model.data;
   return _.sum(
     [attributes, belongsTo, belongsToMany].map(
-      obj => (obj ? Object.keys(obj).length : 0),
+      collection => (Array.isArray(collection) ? collection.length : 0),
     ),
   );
 };

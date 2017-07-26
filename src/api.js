@@ -5,10 +5,10 @@ import { displayHeader } from './actions/header';
 import { getDescription } from './selectors/model';
 
 const empty_model = {
-  attributes: {},
-  belongsTo: {},
-  belongsToMayn: {},
-  hasMany: {},
+  attributes: [],
+  belongsTo: [],
+  belongsToMayn: [],
+  hasMany: [],
 };
 
 export default reduxApi({
