@@ -1,6 +1,7 @@
 // @flow
 import recordsHeader from '../util/recordsHeader';
-import type { ColumnForHeader, ModelDescription } from '../util/recordsHeader';
+import type { ColumnForHeader } from '../util/recordsHeader';
+import type { ModelDescription } from '../api';
 
 export const DISPLAY_HEADER = 'DISPLAY_HEADER';
 

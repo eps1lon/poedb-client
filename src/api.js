@@ -1,13 +1,27 @@
+// @flow
 import reduxApi, { transformers } from 'redux-api';
 import adapterFetch from 'redux-api/lib/adapters/fetch';
 
 import { displayHeader } from './actions/header';
 import { getDescription } from './selectors/model';
 
-const empty_model = {
+export type AttributeDescription = { orig_order: any, name: string };
+export type AssocDescription = {
+  name: string,
+  target_name: string,
+  orig_order: number,
+};
+export type ModelDescription = {
+  attributes: AttributeDescription[],
+  belongsTo: AssocDescription[],
+  hasMany: AssocDescription[],
+  belongsToMany: AssocDescription[],
+};
+
+const empty_model: ModelDescription = {
   attributes: [],
   belongsTo: [],
-  belongsToMayn: [],
+  belongsToMany: [],
   hasMany: [],
 };
 

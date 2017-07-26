@@ -1,24 +1,16 @@
 // @flow
 import { humanize } from 'inflection';
+import type {
+  AttributeDescription,
+  AssocDescription,
+  ModelDescription,
+} from '../api';
 
 export type OrderHierarchy = number[];
 export type ColumnForHeader = {
   label: string,
   accessor: string | Function,
   $order: OrderHierarchy,
-};
-
-export type AttributeDescription = { orig_order: any, name: string };
-export type AssocDescription = {
-  name: string,
-  target_name: string,
-  orig_order: number,
-};
-export type ModelDescription = {
-  attributes: AttributeDescription[],
-  belongsTo: AssocDescription[],
-  hasMany: AssocDescription[],
-  belongsToMany: AssocDescription[],
 };
 
 const intOrDefault = (val: any, def: number): number => {
