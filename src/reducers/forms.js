@@ -4,7 +4,6 @@ const forms = {
   model_selector: { model: '' },
   query_interface: {
     attributes: {},
-    belongsTo: {},
   },
   show_columns: (state = [], action) => {
     if (action.type === DISPLAY_HEADER) {

@@ -18,14 +18,14 @@ class QueryInterface extends Component {
     const { attributes, onSubmit } = this.props;
 
     return (
-      <Form model="query_interface" onSubmit={onSubmit}>
+      <Form model="query_interface.attributes" onSubmit={onSubmit}>
         <ul>
           {Object.entries(attributes).map(([name, { type }]) => {
             return (
               <Field
                 key={name}
                 name={name}
-                model={`.attributes.${name}`}
+                model={`.${name}`}
                 Label={`${name}: `}
                 type={type}
               />
