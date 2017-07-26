@@ -1,4 +1,3 @@
-// @flow
 import { DISPLAY_HEADER } from '../actions/header';
 import api from '../api';
 
@@ -9,17 +8,12 @@ import api from '../api';
  * But the model is updated once we select another one. 
  */
 
-export type State = {
-  columns: boolean[],
-  dirty: boolean,
-};
-
 const initial = {
   columns: [],
   dirty: false,
 };
 
-const header = (state: State = initial, action: Object) => {
+const header = (state = initial, action) => {
   const { type, payload } = action;
   switch (type) {
     // new records should trigger the write through of the header
