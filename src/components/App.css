@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  padding-left: 15px;
 }
 
 .App-logo {
@@ -29,4 +29,24 @@
 
 .hidden {
   display: none;
+}
+
+legend {
+  text-transform: capitalize;
+}
+
+label {
+  font-weight: bold;
+}
+
+.model-selector {
+  padding-bottom: 10px;
+}
+
+.model-selector label {
+  margin-right: 5px;
+}
+
+.show-columns {
+  text-align: center;
 }

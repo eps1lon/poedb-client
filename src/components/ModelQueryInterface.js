@@ -33,7 +33,7 @@ class ModelQueryInterface extends Component {
     return (
       <fieldset className={loading ? 'loading' : ''}>
         <legend>
-          Search<button onClick={toggleVisible}>{visible ? '-' : '+'}</button>
+          search<button onClick={toggleVisible}>{visible ? '-' : '+'}</button>
         </legend>
         <div className={visible ? 'visible' : 'hidden'}>
           <QueryInterface

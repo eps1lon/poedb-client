@@ -30,7 +30,7 @@ class ModelSelector extends Component {
     const { models } = this.props;
 
     return (
-      <Form model="model_selector">
+      <Form className="model-selector" model="model_selector">
         <label>model:</label>
         <Control.select model=".model" defaultValue={this.defaultValue()}>
           {models.map(name =>

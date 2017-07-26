@@ -1,3 +1,4 @@
 .query-interface-field {
-  display: inline-block;
+  display: block;
+  text-align: left;
 }

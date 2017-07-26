@@ -11,14 +11,14 @@ class Field extends Component {
     const id = `query-interface-field-${name}`;
 
     return (
-      <div className="query-interface-field">
+      <li className="query-interface-field">
         <Control.checkbox model={`${model}.enabled`} />
         <label htmlFor={id}>
           {Label}
         </label>
         <Operators type={type} model={`${model}.operator`} />
         <Control.text model={`${model}.value`} id={id} />
-      </div>
+      </li>
     );
   }
 }

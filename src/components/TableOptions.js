@@ -10,22 +10,24 @@ class TableOptions extends Component {
   render() {
     const { show_columns } = this.props;
     return (
-      <Form model="show_columns">
-        <em>Show columns:</em>
-        <ul>
-          {show_columns.map(({ show, label }, i) => {
-            const id = `show_columns_${i}`;
-            return (
-              <li key={i}>
-                <label htmlFor={id}>
-                  {label}
-                </label>
-                <Control.checkbox id={id} model={`[${i}]`} value={show} />
-              </li>
-            );
-          })}
-        </ul>
-      </Form>
+      <fieldset className="table-options">
+        <legend>options</legend>
+        <Form model="show_columns" className="show-columns">
+          <ul>
+            {show_columns.map(({ show, label }, i) => {
+              const id = `show_columns_${i}`;
+              return (
+                <li key={i}>
+                  <label htmlFor={id}>
+                    {label}
+                  </label>
+                  <Control.checkbox id={id} model={`[${i}]`} value={show} />
+                </li>
+              );
+            })}
+          </ul>
+        </Form>
+      </fieldset>
     );
   }
 }
