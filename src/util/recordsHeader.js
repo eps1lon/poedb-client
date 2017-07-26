@@ -11,7 +11,7 @@ const intOrDefault = (val, def) => {
 };
 
 export const isUnknown = attribute_name =>
-  /(Flag|Unknown|Data|Key|Keys)\d*$/i.test(attribute_name);
+  /(Flag|Unknown|Data|Key|Keys|Index)\d*$/i.test(attribute_name);
 
 /**
  * order is 
