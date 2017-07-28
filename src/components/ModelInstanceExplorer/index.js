@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 
 import toggleAble from '../ToggleAble';
 
+import './index.css';
+
 const propTypes = {
   data: PropTypes.object,
 };
 
 class ModelInstanceExplorer extends Component {
   render() {
-    return <div>Explorer</div>;
+    return <div className="model-instance-explorer">Explorer</div>;
   }
 }
 
