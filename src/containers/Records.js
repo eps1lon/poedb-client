@@ -31,6 +31,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onExpandedChange: ({ show, record }) => {
+      console.log(show, record);
+    },
     onFetchData: ({ page, page_size, order }) =>
       dispatch(
         fetchData({
