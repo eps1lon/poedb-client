@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import toggleAble from '../ToggleAble';
+
 const propTypes = {
-  show: PropTypes.bool,
+  data: PropTypes.object,
 };
 
 class ModelInstanceExplorer extends Component {
   render() {
-    const { show } = this.props;
-
-    return <div className={show ? 'visible' : 'hidden'}>Explorer</div>;
+    return <div>Explorer</div>;
   }
 }
 
 ModelInstanceExplorer.propTypes = propTypes;
 
-export default ModelInstanceExplorer;
+export default toggleAble(ModelInstanceExplorer);
