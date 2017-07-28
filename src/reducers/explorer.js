@@ -1,13 +1,18 @@
 import { HIDE_EXPLORER, SHOW_EXPLORER } from '../actions/explorer';
+import api from '../api';
 
 const initial = {
-  loading: false,
   data: {},
   show: false,
 };
 
 const explorer = (state = initial, action) => {
   switch (action.type) {
+    case api.events.record.actionSuccess:
+      return {
+        ...state,
+        data: action.data,
+      };
     case SHOW_EXPLORER:
       return {
         ...state,
