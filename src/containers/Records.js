@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 
+import { hideExplorer, showExplorer } from '../actions/explorer';
 import { fetchData } from '../actions/table';
 import Records from '../components/Records';
 
@@ -32,7 +33,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onExpandedChange: ({ show, record }) => {
-      console.log(show, record);
+      if (show) {
+        dispatch(showExplorer(record));
+      } else {
+        dispatch(hideExplorer());
+      }
     },
     onFetchData: ({ page, page_size, order }) =>
       dispatch(

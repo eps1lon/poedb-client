@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 
 import ModelInstanceExplorer from '../components/ModelInstanceExplorer';
 
-const mapStateToProps = state => {
-  return {};
+const mapStateToProps = ({ explorer: { show } }) => {
+  return {
+    show,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
