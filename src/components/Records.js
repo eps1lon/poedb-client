@@ -11,11 +11,6 @@ class Records extends Component {
     const { onExpandedChange } = this.props;
 
     if (onExpandedChange) {
-      // only keep one row expanded at a time
-      this.refs.table.setState({
-        expanded: { [index]: new_expanded[index] },
-      });
-
       onExpandedChange({
         show: Boolean(new_expanded[index]),
         record: this.props.records[index],
@@ -34,7 +29,7 @@ class Records extends Component {
   }
 
   render() {
-    const { columns, loading, pages, records } = this.props;
+    const { columns, expanded, loading, pages, records } = this.props;
     const onExpandedChange = this.handleExpander.bind(this);
     const onFetchData = this.handleFetch.bind(this);
 
@@ -72,6 +67,7 @@ class Records extends Component {
         onFetchData={onFetchData}
         defaultPageSize={20}
         pages={pages}
+        expanded={expanded}
         sortable={true}
       />
     );
@@ -85,6 +81,7 @@ Records.propTypes = {
   onFetchData: PropTypes.func.isRequired,
   pages: PropTypes.number,
   records: PropTypes.arrayOf(PropTypes.object),
+  expanded: PropTypes.object,
 };
 
 export default Records;

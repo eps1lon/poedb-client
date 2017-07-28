@@ -18,15 +18,20 @@ const mapColumns = (columns, show) => {
 
 const mapStateToProps = state => {
   const {
+    explorer,
     header: { columns, dirty },
     records: { data: { result, pages }, loading },
     show_columns,
   } = state;
+
   return {
     columns: mapColumns(columns, show_columns),
     loading,
     pages,
     records: dirty ? [] : result,
+    expanded: {
+      [result.findIndex(({ row }) => row === explorer.data.row)]: explorer.show,
+    },
   };
 };
 
