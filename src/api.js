@@ -32,6 +32,9 @@ export default reduxApi({
     url: `/find/:model/`,
     transformer: data => (data ? data : { result: [], pages: -1 }),
   },
+  instance: {
+    url: '/find/:model/:id',
+  },
 })
   .use('fetch', adapterFetch(fetch))
   .use('rootUrl', 'http://localhost:3000/')

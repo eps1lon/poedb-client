@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import ModelInstanceExplorer from '../containers/ModelInstanceExplorer';
 import ModelSelector from '../containers/ModelSelector';
 import ModelQueryInterface from '../containers/ModelQueryInterface';
 import Records from '../containers/Records';
@@ -16,6 +17,7 @@ class App extends Component {
         <ModelQueryInterface />
         <TableOptions />
         <Records />
+        <ModelInstanceExplorer />
       </div>
     );
   }
