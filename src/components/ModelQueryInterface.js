@@ -36,11 +36,9 @@ class ModelQueryInterface extends Component {
           search<button onClick={toggleVisible}>{visible ? '-' : '+'}</button>
         </legend>
         <div className={visible ? 'visible' : 'hidden'}>
-          <QueryInterface
-            onSubmit={handleSubmit}
-            attributes={query_interface.attributes}
-          />
+          <QueryInterface attributes={query_interface.attributes} />
         </div>
+        <button onClick={handleSubmit}>search</button>
       </fieldset>
     );
   }

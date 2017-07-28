@@ -32,8 +32,6 @@ class QueryInterface extends Component {
             );
           })}
         </ul>
-
-        <button type="search">search</button>
       </Form>
     );
   }
@@ -41,7 +39,7 @@ class QueryInterface extends Component {
 
 QueryInterface.propTypes = {
   attributes: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
 };
 
 export default QueryInterface;
