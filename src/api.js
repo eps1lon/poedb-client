@@ -11,6 +11,21 @@ const empty_model = {
 
 export const MODEL_NAME = Symbol('model name ident');
 
+const mapModelNames = ({ result, description }, root_name) => {
+  for (const [attr, { target_name }] of [
+    ...Object.entries(description['belongsTo']),
+    ...Object.entries(description['belongsToMany']),
+  ]) {
+    if (result[attr]) {
+      result[attr][MODEL_NAME] = target_name;
+    }
+  }
+
+  result[MODEL_NAME] = root_name;
+
+  return result;
+};
+
 /**
  * api endpoints
  * 
@@ -45,11 +60,9 @@ export default reduxApi({
         : { result: [], pages: -1 },
   },
   record: {
-    url: '/find/:model/:id',
+    url: '/find/:model/:id?withDescription',
     transformer: (data, prev_data, action) =>
-      data
-        ? { ...data.result, [MODEL_NAME]: action.request.pathvars.model }
-        : {},
+      data ? mapModelNames(data, action.request.pathvars.model) : {},
   },
 })
   .use('fetch', adapterFetch(fetch))

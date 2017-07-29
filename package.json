@@ -11,6 +11,7 @@
     "react-redux-form": "^1.13.0",
     "react-scripts": "1.0.10",
     "react-table": "^6.5.1",
+    "react-vis-force": "^0.3.1",
     "redux": "^3.7.2",
     "redux-api": "^0.10.8",
     "redux-logger": "^3.0.6",
