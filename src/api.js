@@ -1,3 +1,4 @@
+import { singularize } from 'inflection';
 import reduxApi, { transformers } from 'redux-api';
 import adapterFetch from 'redux-api/lib/adapters/fetch';
 
@@ -7,6 +8,8 @@ const empty_model = {
   belongsToMayn: {},
   hasMany: {},
 };
+
+export const MODEL_NAME = Symbol('model name ident');
 
 /**
  * api endpoints
@@ -30,11 +33,23 @@ export default reduxApi({
   },
   records: {
     url: `/find/:model/`,
-    transformer: data => (data ? data : { result: [], pages: -1 }),
+    transformer: (data, prev_data, action) =>
+      data
+        ? {
+            result: data.result.map(row => ({
+              ...row,
+              [MODEL_NAME]: singularize(action.request.pathvars.model),
+            })),
+            pages: data.pages,
+          }
+        : { result: [], pages: -1 },
   },
   record: {
     url: '/find/:model/:id',
-    transformer: data => (data ? data.result : {}),
+    transformer: (data, prev_data, action) =>
+      data
+        ? { ...data.result, [MODEL_NAME]: action.request.pathvars.model }
+        : {},
   },
 })
   .use('fetch', adapterFetch(fetch))
