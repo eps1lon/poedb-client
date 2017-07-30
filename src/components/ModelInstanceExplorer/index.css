@@ -1,6 +1,6 @@
 .model-instance-explorer {
   position: fixed;
-  z-index: 2;
+  z-index: 11;
   width: 800px;
   height: 600px;
   top: 50%;
