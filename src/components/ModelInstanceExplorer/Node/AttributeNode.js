@@ -11,7 +11,7 @@ const AttributeNode = ({ attribute, value }) => {
   return (
     <ForceGraphNode
       key={attribute}
-      node={{ id: attribute, label: String(value) }}
+      node={{ id: attribute, label: String(value), radius: 5 }}
       className="attribute"
     />
   );
