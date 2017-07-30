@@ -10,3 +10,11 @@
 
   background-color: grey;
 }
+
+.model-instance-explorer .attribute {
+  fill: red;
+}
+
+.model-instance-explorer .attribute {
+  fill: blue;
+}

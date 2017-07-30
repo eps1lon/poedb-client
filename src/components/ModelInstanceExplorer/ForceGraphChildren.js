@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ForceGraphLink } from 'react-vis-force';
 import _ from 'lodash';
 
-import Node from './Node';
+import Node from './Node/';
 
 const propTypes = {
   data: PropTypes.object.isRequired,
