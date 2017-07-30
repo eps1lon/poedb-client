@@ -10,7 +10,7 @@ const propTypes = {
   props: PropTypes.any,
 };
 
-const isAssocNode = props => props && props[MODEL_NAME];
+export const isAssocNode = props => props && props[MODEL_NAME];
 
 // dont nest nodes, immediate child of ForceGraphChildren needs to be ForceGraphNode
 const Node = ({ attribute, props }) => {

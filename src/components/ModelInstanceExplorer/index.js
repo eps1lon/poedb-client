@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { InteractiveForceGraph } from 'react-vis-force';
 
 import ForceGraphChildren from './ForceGraphChildren';
+import { isAssocNode } from './Node/';
 import toggleAble from '../ToggleAble';
 
 import './index.css';
@@ -11,7 +12,25 @@ const propTypes = {
   root: PropTypes.object,
 };
 
+const findAttribute = (attributes, id) => attributes[id];
+
 class ModelInstanceExplorer extends Component {
+  simulationOptions() {
+    return {
+      strength: {
+        charge: node => {
+          const attribute = findAttribute(this.props.root, node.id);
+
+          if (isAssocNode(attribute)) {
+            return -1000;
+          } else {
+            return -100;
+          }
+        },
+      },
+    };
+  }
+
   render() {
     const { root } = this.props;
 
@@ -23,9 +42,7 @@ class ModelInstanceExplorer extends Component {
       <div className="model-instance-explorer">
         <InteractiveForceGraph
           labelAttr="label"
-          simulationOptions={{
-            strength: { charge: -1000 },
-          }}
+          simulationOptions={this.simulationOptions()}
         >
           {ForceGraphChildren({ root })}
         </InteractiveForceGraph>
