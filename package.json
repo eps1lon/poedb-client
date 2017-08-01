@@ -19,19 +19,20 @@
     "redux-thunk": "^2.2.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier-eslint --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,css}": ["prettier-eslint --write", "git add"]
   },
   "scripts": {
     "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-schema": "node --trace-warnings ./scripts/normalizrSchema",
+    "postbuild-schema": "prettier-eslint --write ./src/schema/generated.js"
   },
   "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-types": "^6.25.0",
     "eslint": "^4.2.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
