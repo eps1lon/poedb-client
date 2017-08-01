@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ForceGraphLink } from 'react-vis-force';
 import _ from 'lodash';
 
-import { links } from '../../util/normalizr';
+import { links as buildLinks } from '../../util/normalizr';
 import Node, { nodeId } from './Node';
 
 const propTypes = {
@@ -17,32 +17,36 @@ const ForceGraphChildren = ({ entities, schemas }) => {
   if (Object.keys(entities).length === 0) {
     return null;
   }
-  return _.flatten([
-    ...Object.entries(entities).map(([collection, entries]) => {
+
+  const nodes = _.flatten(
+    Object.entries(entities).map(([collection, entries]) => {
       return Object.values(entries).map(entry => {
         return Node({ collection, props: entry });
       });
     }),
-    ...links(entities, schemas)
-      .filter(({ target }) => target.id !== undefined)
-      .map(({ source, target }) => {
-        const source_id = nodeId({
-          collection: source.key,
-          props: { row: source.id },
-        });
-        const target_id = nodeId({
-          collection: target.key,
-          props: { row: target.id },
-        });
+  );
 
-        return (
-          <ForceGraphLink
-            key={`${source_id}_${target_id}`}
-            link={{ source: source_id, target: target_id }}
-          />
-        );
-      }),
-  ]);
+  const links = buildLinks(entities, schemas)
+    .filter(({ target }) => target.id !== undefined)
+    .map(({ source, target }) => {
+      const source_id = nodeId({
+        collection: source.key,
+        props: { row: source.id },
+      });
+      const target_id = nodeId({
+        collection: target.key,
+        props: { row: target.id },
+      });
+
+      return (
+        <ForceGraphLink
+          key={`${source_id}_${target_id}`}
+          link={{ source: source_id, target: target_id }}
+        />
+      );
+    });
+
+  return [...nodes, ...links];
 };
 
 ForceGraphChildren.propTypes = propTypes;
