@@ -10,7 +10,7 @@ const propTypes = {
 export const nodeId = ({ collection, props }) => {
   const { row } = props;
 
-  return `${collection}${row}`;
+  return `${collection}-${row}`;
 };
 
 const InstanceNode = ({ collection, props }) => {
