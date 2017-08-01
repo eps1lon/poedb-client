@@ -2,29 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ForceGraphNode } from 'react-vis-force';
 
-import { MODEL_NAME } from '../../../api';
-
 const propTypes = {
+  collection: PropTypes.string.isRequired,
   props: PropTypes.object.isRequired,
 };
 
-export const isInstanceNode = props => {
-  return props && props[MODEL_NAME];
+export const nodeId = ({ collection, props }) => {
+  const { row } = props;
+
+  return `${collection}${row}`;
 };
 
-export const nodeId = ({ props }) => {
+const InstanceNode = ({ collection, props }) => {
   const { row } = props;
-  const model_name = String(props[MODEL_NAME]);
 
-  return `${model_name}${row}`;
-};
-
-const InstanceNode = ({ props }) => {
-  const { row } = props;
-  const model_name = String(props[MODEL_NAME]);
-
-  const id = nodeId({ props });
-  const label = `${model_name}(row=${row})`;
+  const id = nodeId({ collection, props });
+  const label = `${collection}(row=${row})`;
 
   return (
     <ForceGraphNode

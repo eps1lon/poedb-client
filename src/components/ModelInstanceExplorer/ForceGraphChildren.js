@@ -3,33 +3,42 @@ import PropTypes from 'prop-types';
 import { ForceGraphLink } from 'react-vis-force';
 import _ from 'lodash';
 
-import Node, { nodeId } from './Node/';
+import * as schemas from '../../schema/generated';
+import { links } from '../../util/normalizr';
+import Node, { nodeId } from './Node';
 
 const propTypes = {
-  data: PropTypes.object.isRequired,
+  entities: PropTypes.object.isRequired,
 };
 
 // TODO this is not an actual component because components cant
 // return collections. Once react 16 (fiber) is used we can use it as one
-const ForceGraphChildren = ({ root }) => {
-  if (Object.keys(root).length === 0) {
+const ForceGraphChildren = ({ entities }) => {
+  if (Object.keys(entities).length === 0) {
     return null;
   }
-
-  const root_id = nodeId({ attribute: 'root', props: root, root: null });
-
   return _.flatten([
-    Node({ attribute: 'root', props: root }),
-    ...Object.entries(root).map(([attribute, props]) => {
-      const id = nodeId({ attribute, props, root });
+    ...Object.entries(entities).map(([collection, entries]) => {
+      return Object.values(entries).map(entry => {
+        return Node({ collection, props: entry });
+      });
+    }),
+    ...links(entities, schemas).map(({ source, target }) => {
+      const source_id = nodeId({
+        collection: source.key,
+        props: { row: source.id },
+      });
+      const target_id = nodeId({
+        collection: target.key,
+        props: { row: target.id },
+      });
 
-      return [
-        Node({ attribute, props, root }),
+      return (
         <ForceGraphLink
-          key={attribute}
-          link={{ source: root_id, target: id }}
-        />,
-      ];
+          key={`${source_id}_${target_id}`}
+          link={{ source: source_id, target: target_id }}
+        />
+      );
     }),
   ]);
 };

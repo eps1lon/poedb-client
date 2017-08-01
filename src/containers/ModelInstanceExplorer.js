@@ -2,9 +2,13 @@ import { connect } from 'react-redux';
 
 import ModelInstanceExplorer from '../components/ModelInstanceExplorer';
 
-const mapStateToProps = ({ explorer: { show, data }, record: { loading } }) => {
+const mapStateToProps = ({
+  explorer: { entities, root, show },
+  record: { loading },
+}) => {
   return {
-    root: data,
+    entities,
+    root,
     loading,
     show,
   };
