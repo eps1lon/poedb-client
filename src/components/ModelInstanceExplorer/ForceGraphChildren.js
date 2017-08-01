@@ -27,7 +27,7 @@ const ForceGraphChildren = ({ entities, schemas }) => {
   );
 
   const links = buildLinks(entities, schemas)
-    .filter(({ target }) => target.id !== undefined)
+    .filter(({ target }) => target.id !== undefined && target.id !== null)
     .map(({ source, target }) => {
       const source_id = nodeId({
         collection: source.key,
