@@ -9,10 +9,24 @@ import './index.css';
 
 const propTypes = {
   entities: PropTypes.object,
+  onSelectNode: PropTypes.func,
   schemas: PropTypes.object,
 };
 
 class ModelInstanceExplorer extends Component {
+  handleSelect(event, node) {
+    const { onSelectNode, schemas } = this.props;
+
+    if (onSelectNode) {
+      const [key, id] = node.id.split('-');
+      const [model, schema] = Object.entries(schemas).find(
+        ([model, schema]) => schema.key === key,
+      );
+
+      onSelectNode({ id, model, schema });
+    }
+  }
+
   simulationOptions() {
     return {
       strength: {
@@ -23,6 +37,7 @@ class ModelInstanceExplorer extends Component {
 
   render() {
     const { entities, schemas } = this.props;
+    const handleSelect = this.handleSelect.bind(this);
 
     if (!entities || Object.keys(entities).length === 0) {
       return null;
@@ -33,6 +48,7 @@ class ModelInstanceExplorer extends Component {
         <InteractiveForceGraph
           labelAttr="label"
           simulationOptions={this.simulationOptions()}
+          onSelectNode={handleSelect}
         >
           {ForceGraphChildren({ entities, schemas })}
         </InteractiveForceGraph>
