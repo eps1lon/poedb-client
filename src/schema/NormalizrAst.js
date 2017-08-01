@@ -1,14 +1,7 @@
 const t = require('babel-types');
 const _ = require('lodash');
 
-const lcfirst = s => s[0].toLowerCase() + s.slice(1);
-
-const modelVar = name =>
-  t.memberExpression(
-    t.identifier('schema'),
-    t.stringLiteral(lcfirst(name)),
-    true,
-  );
+const modelVar = name => t.identifier(name);
 
 /**
  * ast builder for /describe/ endpoint
@@ -37,27 +30,22 @@ class NormalizrAst {
 
   schema() {
     return [
-      t.exportNamedDeclaration(this.schemaDeclaration(), [
-        t.exportSpecifier(t.identifier('schema'), t.identifier('schema')),
-      ]),
+      ...this.schemaDeclarations().map(declaration => {
+        return t.exportNamedDeclaration(declaration, []);
+      }),
       ...this.defineAssocs(),
     ];
   }
 
-  schemaDeclaration() {
-    return t.variableDeclaration('const', [
-      t.variableDeclarator(
-        t.identifier('schema'),
-        t.objectExpression(
-          Object.entries(this.descriptions).map(([name, description]) => {
-            return t.objectProperty(
-              t.stringLiteral(lcfirst(name)),
-              this.entityDefinition({ description }),
-            );
-          }),
+  schemaDeclarations() {
+    return Object.entries(this.descriptions).map(([name, description]) => {
+      return t.variableDeclaration('const', [
+        t.variableDeclarator(
+          modelVar(name),
+          this.entityDefinition({ description }),
         ),
-      ),
-    ]);
+      ]);
+    });
   }
 
   entityDefinition({ description }) {
