@@ -9,6 +9,7 @@ import './index.css';
 
 const propTypes = {
   entities: PropTypes.object,
+  schemas: PropTypes.object,
 };
 
 class ModelInstanceExplorer extends Component {
@@ -21,7 +22,7 @@ class ModelInstanceExplorer extends Component {
   }
 
   render() {
-    const { entities } = this.props;
+    const { entities, schemas } = this.props;
 
     if (!entities || Object.keys(entities).length === 0) {
       return null;
@@ -33,7 +34,7 @@ class ModelInstanceExplorer extends Component {
           labelAttr="label"
           simulationOptions={this.simulationOptions()}
         >
-          {ForceGraphChildren({ entities })}
+          {ForceGraphChildren({ entities, schemas })}
         </InteractiveForceGraph>
       </div>
     );

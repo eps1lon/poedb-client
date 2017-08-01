@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { ForceGraphLink } from 'react-vis-force';
 import _ from 'lodash';
 
-import * as schemas from '../../schema/generated';
 import { links } from '../../util/normalizr';
 import Node, { nodeId } from './Node';
 
 const propTypes = {
   entities: PropTypes.object.isRequired,
+  schemas: PropTypes.object.isRequired,
 };
 
 // TODO this is not an actual component because components cant
 // return collections. Once react 16 (fiber) is used we can use it as one
-const ForceGraphChildren = ({ entities }) => {
+const ForceGraphChildren = ({ entities, schemas }) => {
   if (Object.keys(entities).length === 0) {
     return null;
   }
