@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { InteractiveForceGraph } from 'react-vis-force';
 
 import ForceGraphChildren from './ForceGraphChildren';
-import { isAssocNode } from './Node/';
+import { isInstanceNode } from './Node/InstanceNode';
 import toggleAble from '../ToggleAble';
 
 import './index.css';
@@ -21,7 +21,7 @@ class ModelInstanceExplorer extends Component {
         charge: node => {
           const attribute = findAttribute(this.props.root, node.id);
 
-          if (isAssocNode(attribute)) {
+          if (isInstanceNode({ props: attribute })) {
             return -1000;
           } else {
             return -100;

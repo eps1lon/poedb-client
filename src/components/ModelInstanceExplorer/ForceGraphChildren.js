@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ForceGraphLink } from 'react-vis-force';
 import _ from 'lodash';
 
-import Node from './Node/';
+import Node, { nodeId } from './Node/';
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -16,14 +16,18 @@ const ForceGraphChildren = ({ root }) => {
     return null;
   }
 
+  const root_id = nodeId({ attribute: 'root', props: root, root: null });
+
   return _.flatten([
     Node({ attribute: 'root', props: root }),
     ...Object.entries(root).map(([attribute, props]) => {
+      const id = nodeId({ attribute, props, root });
+
       return [
-        Node({ attribute, props }),
+        Node({ attribute, props, root }),
         <ForceGraphLink
           key={attribute}
-          link={{ source: 'root', target: attribute }}
+          link={{ source: root_id, target: id }}
         />,
       ];
     }),

@@ -1,23 +1,30 @@
 import PropTypes from 'prop-types';
 
-import { MODEL_NAME } from '../../../api';
-
-import AssociationNode from './AssociationNode';
-import AttributeNode from './AttributeNode';
+import AttributeNode, { nodeId as attributeNodeId } from './AttributeNode';
+import InstanceNode, {
+  nodeId as instanceNodeId,
+  isInstanceNode,
+} from './InstanceNode';
 
 const propTypes = {
   attribute: PropTypes.string.isRequired,
   props: PropTypes.any,
 };
 
-export const isAssocNode = props => props && props[MODEL_NAME];
+export const nodeId = ({ attribute, props, root }) => {
+  if (isInstanceNode(props)) {
+    return instanceNodeId({ props });
+  } else {
+    return attributeNodeId({ attribute, root });
+  }
+};
 
 // dont nest nodes, immediate child of ForceGraphChildren needs to be ForceGraphNode
-const Node = ({ attribute, props }) => {
-  if (isAssocNode(props)) {
-    return AssociationNode({ association: props[MODEL_NAME], attribute });
+const Node = ({ attribute, props, root }) => {
+  if (isInstanceNode(props)) {
+    return InstanceNode({ props });
   } else {
-    return AttributeNode({ attribute, value: props });
+    return AttributeNode({ attribute, value: props, root });
   }
 };
 
