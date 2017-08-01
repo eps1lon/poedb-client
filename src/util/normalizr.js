@@ -14,7 +14,7 @@ export const links = (entities, schemas) => {
         return Object.entries(
           schema.schema,
         ).map(([attribute, target_schema]) => {
-          if (Array.isArray(target_schema)) {
+          if (Array.isArray(target_schema) && Array.isArray(entry[attribute])) {
             return entry[attribute].map(target_id => {
               return {
                 source: { key: schema.key, id },
