@@ -21,6 +21,7 @@ const explorer = (state = initial, action) => {
     case SHOW_EXPLORER:
       return {
         ...state,
+        entities: {},
         root: action.payload.record.row,
         show: true,
       };
