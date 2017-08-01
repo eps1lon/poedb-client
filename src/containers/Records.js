@@ -30,7 +30,7 @@ const mapStateToProps = state => {
     pages,
     records: dirty ? [] : result,
     expanded: {
-      [result.findIndex(({ row }) => row === explorer.data.row)]: explorer.show,
+      [explorer.root]: explorer.show,
     },
   };
 };

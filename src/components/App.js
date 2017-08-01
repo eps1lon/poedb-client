@@ -17,7 +17,7 @@ class App extends Component {
         <ModelQueryInterface />
         <TableOptions />
         <Records />
-        <ModelInstanceExplorer />
+        {false && <ModelInstanceExplorer />}
       </div>
     );
   }

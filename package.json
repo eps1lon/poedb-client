@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "inflection": "^1.12.0",
+    "normalizr": "^3.2.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-prop-types": "^0.4.0",
@@ -19,7 +20,10 @@
     "redux-thunk": "^2.2.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier-eslint --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier-eslint --write",
+      "git add"
+    ]
   },
   "scripts": {
     "precommit": "lint-staged",
