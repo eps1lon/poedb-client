@@ -23,23 +23,25 @@ const ForceGraphChildren = ({ entities, schemas }) => {
         return Node({ collection, props: entry });
       });
     }),
-    ...links(entities, schemas).map(({ source, target }) => {
-      const source_id = nodeId({
-        collection: source.key,
-        props: { row: source.id },
-      });
-      const target_id = nodeId({
-        collection: target.key,
-        props: { row: target.id },
-      });
+    ...links(entities, schemas)
+      .filter(({ target }) => target.id !== undefined)
+      .map(({ source, target }) => {
+        const source_id = nodeId({
+          collection: source.key,
+          props: { row: source.id },
+        });
+        const target_id = nodeId({
+          collection: target.key,
+          props: { row: target.id },
+        });
 
-      return (
-        <ForceGraphLink
-          key={`${source_id}_${target_id}`}
-          link={{ source: source_id, target: target_id }}
-        />
-      );
-    }),
+        return (
+          <ForceGraphLink
+            key={`${source_id}_${target_id}`}
+            link={{ source: source_id, target: target_id }}
+          />
+        );
+      }),
   ]);
 };
 

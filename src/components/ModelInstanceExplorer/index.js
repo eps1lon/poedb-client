@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { InteractiveForceGraph } from 'react-vis-force';
 
+import { ExpandableInteractiveForceGraph } from './expandable';
 import ForceGraphChildren from './ForceGraphChildren';
 import toggleAble from '../ToggleAble';
 
@@ -45,13 +45,13 @@ class ModelInstanceExplorer extends Component {
 
     return (
       <div className="model-instance-explorer">
-        <InteractiveForceGraph
+        <ExpandableInteractiveForceGraph
           labelAttr="label"
           simulationOptions={this.simulationOptions()}
           onSelectNode={handleSelect}
         >
           {ForceGraphChildren({ entities, schemas })}
-        </InteractiveForceGraph>
+        </ExpandableInteractiveForceGraph>
       </div>
     );
   }
