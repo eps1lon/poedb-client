@@ -43,7 +43,7 @@ const ForceGraphChildren = ({ entities, nodeFill, schemas }) => {
         <ForceGraphArrowLink
           key={`${source_id}_${target_id}`}
           link={{ source: source_id, target: target_id }}
-          targetRadius={5}
+          targetRadius={2}
         />
       );
     });

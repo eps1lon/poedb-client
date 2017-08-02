@@ -9,7 +9,7 @@
   margin-left: -400px; /* Negative half of width. */
   overflow: hidden;
 
-  background-color: grey;
+  background-color: lightgray;
 }
 
 .model-instance-explorer .attribute {
@@ -29,4 +29,13 @@
   margin-right: 2px;
   height: 1em;
   width: 1em;
+}
+
+.rv-force__links defs marker path {
+  fill: black;
+}
+
+.rv-force__link {
+  stroke: black;
+  stroke-width: 3;
 }
