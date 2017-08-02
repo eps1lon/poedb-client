@@ -18,3 +18,14 @@
 .model-instance-explorer .attribute {
   fill: blue;
 }
+
+.node-legend {
+  font-size: .8em;
+}
+
+.node-legend .node-fill-color {
+  display: inline-block;
+  margin-right: 2px;
+  height: 1em;
+  width: 1em;
+}

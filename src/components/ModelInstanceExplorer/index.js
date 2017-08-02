@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { ExpandableInteractiveForceGraph } from './expandable';
 import ForceGraphChildren from './ForceGraphChildren';
+import GraphLegend from './GraphLegend';
 import toggleAble from '../ToggleAble';
 
 import './index.css';
@@ -68,6 +69,7 @@ class ModelInstanceExplorer extends Component {
 
     return (
       <div className="model-instance-explorer">
+        <GraphLegend entities={entities} nodeFill={this.fillColor} />
         <ExpandableInteractiveForceGraph
           labelAttr="label"
           simulationOptions={this.simulationOptions()}
