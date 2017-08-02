@@ -7,6 +7,7 @@
   left: 50%;
   margin-top: -300px; /* Negative half of height. */
   margin-left: -400px; /* Negative half of width. */
+  overflow: hidden;
 
   background-color: grey;
 }

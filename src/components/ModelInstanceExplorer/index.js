@@ -74,6 +74,7 @@ class ModelInstanceExplorer extends Component {
           labelAttr="label"
           simulationOptions={this.simulationOptions()}
           onSelectNode={handleSelect}
+          zoom={true}
         >
           {ForceGraphChildren({ entities, nodeFill: this.fillColor, schemas })}
         </ExpandableInteractiveForceGraph>
