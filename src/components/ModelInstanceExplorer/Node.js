@@ -23,7 +23,7 @@ const InstanceNode = ({ collection, props }) => {
     <ForceGraphNode
       key={id}
       node={{ id, label, radius: 10 }}
-      className="instance"
+      className={`entity entity-of-${collection}`}
     />
   );
 };
