@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { ExpandableInteractiveForceGraph } from './expandable';
 import ForceGraphChildren from './ForceGraphChildren';
 import GraphLegend from './GraphLegend';
+import NodeTooltip from './NodeTooltip';
 import toggleAble from '../ToggleAble';
 
 import './index.css';
@@ -24,11 +25,19 @@ class ModelInstanceExplorer extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      hovered: { collection: undefined, props: undefined },
+    };
+
     this.updateColors();
   }
 
   componentDidUpdate() {
     this.updateColors();
+  }
+
+  handleNodeHover(collection, node_props) {
+    this.setState({ hovered: { collection, props: node_props } });
   }
 
   handleSelect(event, node) {
@@ -61,6 +70,9 @@ class ModelInstanceExplorer extends Component {
 
   render() {
     const { entities, schemas } = this.props;
+    const { hovered } = this.state;
+
+    const handleNodeHover = this.handleNodeHover.bind(this);
     const handleSelect = this.handleSelect.bind(this);
 
     if (!entities || Object.keys(entities).length === 0) {
@@ -70,14 +82,23 @@ class ModelInstanceExplorer extends Component {
     return (
       <div className="model-instance-explorer">
         <GraphLegend entities={entities} nodeFill={this.fillColor} />
-        <ExpandableInteractiveForceGraph
-          labelAttr="label"
-          simulationOptions={this.simulationOptions()}
-          onSelectNode={handleSelect}
-          zoom={true}
-        >
-          {ForceGraphChildren({ entities, nodeFill: this.fillColor, schemas })}
-        </ExpandableInteractiveForceGraph>
+        <div className="model-instance-explorer-graph-group">
+          <NodeTooltip node={hovered} />
+          <ExpandableInteractiveForceGraph
+            className="model-instance-explorer-graph"
+            labelAttr="label"
+            simulationOptions={this.simulationOptions()}
+            onSelectNode={handleSelect}
+            zoom={true}
+          >
+            {ForceGraphChildren({
+              entities,
+              nodeFill: this.fillColor,
+              onNodeHover: handleNodeHover,
+              schemas,
+            })}
+          </ExpandableInteractiveForceGraph>
+        </div>
       </div>
     );
   }

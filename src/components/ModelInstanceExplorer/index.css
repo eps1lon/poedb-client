@@ -20,6 +20,20 @@
   fill: blue;
 }
 
+.model-instance-explorer-graph-group {
+  position: relative;
+}
+
+.model-instance-explorer-graph,
+.model-instance-explorer-node-tooltip {
+  position: absolute;
+  top: 0px;
+}
+
+.model-instance-explorer-node-tooltip ul li {
+  display: block;
+}
+
 .node-legend {
   font-size: .8em;
 }
