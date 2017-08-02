@@ -9,11 +9,12 @@ import Node, { nodeId } from './Node';
 const propTypes = {
   entities: PropTypes.object.isRequired,
   schemas: PropTypes.object.isRequired,
+  nodeFill: PropTypes.func,
 };
 
 // TODO this is not an actual component because components cant
 // return collections. Once react 16 (fiber) is used we can use it as one
-const ForceGraphChildren = ({ entities, schemas }) => {
+const ForceGraphChildren = ({ entities, nodeFill, schemas }) => {
   if (Object.keys(entities).length === 0) {
     return null;
   }
@@ -21,7 +22,7 @@ const ForceGraphChildren = ({ entities, schemas }) => {
   const nodes = _.flatten(
     Object.entries(entities).map(([collection, entries]) => {
       return Object.values(entries).map(entry => {
-        return Node({ collection, props: entry });
+        return Node({ collection, fill: nodeFill, props: entry });
       });
     }),
   );

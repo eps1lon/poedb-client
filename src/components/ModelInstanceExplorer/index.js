@@ -1,3 +1,4 @@
+import { schemeCategory20c, scaleOrdinal } from 'd3-scale';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -8,12 +9,27 @@ import toggleAble from '../ToggleAble';
 import './index.css';
 
 const propTypes = {
+  defaultFillColor: PropTypes.string,
   entities: PropTypes.object,
   onSelectNode: PropTypes.func,
   schemas: PropTypes.object,
 };
 
+const defaultProps = {
+  defaultFillColor: 'red',
+};
+
 class ModelInstanceExplorer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.updateColors();
+  }
+
+  componentDidUpdate() {
+    this.updateColors();
+  }
+
   handleSelect(event, node) {
     const { onSelectNode, schemas } = this.props;
 
@@ -35,6 +51,13 @@ class ModelInstanceExplorer extends Component {
     };
   }
 
+  updateColors() {
+    const { defaultFillColor, schemas } = this.props;
+    this.fillColor = scaleOrdinal(schemeCategory20c)
+      .domain(Object.values(schemas).map(schema => schema.key))
+      .unknown(defaultFillColor);
+  }
+
   render() {
     const { entities, schemas } = this.props;
     const handleSelect = this.handleSelect.bind(this);
@@ -50,7 +73,7 @@ class ModelInstanceExplorer extends Component {
           simulationOptions={this.simulationOptions()}
           onSelectNode={handleSelect}
         >
-          {ForceGraphChildren({ entities, schemas })}
+          {ForceGraphChildren({ entities, nodeFill: this.fillColor, schemas })}
         </ExpandableInteractiveForceGraph>
       </div>
     );
@@ -58,5 +81,6 @@ class ModelInstanceExplorer extends Component {
 }
 
 ModelInstanceExplorer.propTypes = propTypes;
+ModelInstanceExplorer.defaultProps = defaultProps;
 
 export default toggleAble(ModelInstanceExplorer);
