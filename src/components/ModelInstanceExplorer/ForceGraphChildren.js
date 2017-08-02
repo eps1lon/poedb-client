@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ForceGraphLink } from 'react-vis-force';
+import { ForceGraphArrowLink } from 'react-vis-force';
 import _ from 'lodash';
 
 import { links as buildLinks } from '../../util/normalizr';
@@ -40,9 +40,10 @@ const ForceGraphChildren = ({ entities, nodeFill, schemas }) => {
       });
 
       return (
-        <ForceGraphLink
+        <ForceGraphArrowLink
           key={`${source_id}_${target_id}`}
           link={{ source: source_id, target: target_id }}
+          targetRadius={5}
         />
       );
     });
