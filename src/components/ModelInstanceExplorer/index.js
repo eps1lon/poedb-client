@@ -58,6 +58,8 @@ class ModelInstanceExplorer extends Component {
       strength: {
         charge: -1000,
       },
+      width: 1200,
+      height: 800,
     };
   }
 
