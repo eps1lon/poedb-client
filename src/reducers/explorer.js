@@ -13,6 +13,11 @@ const initial = {
 
 const explorer = (state = initial, action) => {
   switch (action.type) {
+    case api.events.records.actionSuccess:
+      return {
+        ...state,
+        root: -1,
+      };
     case api.events.record.actionSuccess:
       const model_name = action.request.pathvars.model;
       const entity = schema[model_name];
