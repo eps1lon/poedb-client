@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { nodeSelected, nodeHovered, nodeOut } from '../actions/explorer';
 import ModelInstanceExplorer from '../components/ModelInstanceExplorer';
 import * as schemas from '../schema/generated';
+import { visibleTooltipAttributes } from '../selectors/explorer';
 
 const mapStateToProps = ({
   explorer: { entities, hover, root, show },
@@ -10,7 +11,7 @@ const mapStateToProps = ({
 }) => {
   return {
     entities,
-    hovered: hover,
+    hovered: visibleTooltipAttributes(hover),
     root,
     loading,
     show,
