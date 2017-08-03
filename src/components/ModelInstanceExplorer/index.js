@@ -13,7 +13,9 @@ import './index.css';
 const propTypes = {
   defaultFillColor: PropTypes.string,
   entities: PropTypes.object,
+  onHoverNode: PropTypes.func,
   onSelectNode: PropTypes.func,
+  onOutNode: PropTypes.func,
   schemas: PropTypes.object,
 };
 
@@ -25,10 +27,6 @@ class ModelInstanceExplorer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      hovered: { collection: undefined, props: undefined },
-    };
-
     this.updateColors();
   }
 
@@ -37,7 +35,19 @@ class ModelInstanceExplorer extends Component {
   }
 
   handleNodeHover(collection, node_props) {
-    this.setState({ hovered: { collection, props: node_props } });
+    const { onHoverNode } = this.props;
+
+    if (onHoverNode) {
+      onHoverNode(collection, node_props);
+    }
+  }
+
+  handleNodeOut(collection, node_props) {
+    const { onOutNode } = this.props;
+
+    if (onOutNode) {
+      onOutNode(collection, node_props);
+    }
   }
 
   handleSelect(event, node) {
@@ -71,10 +81,10 @@ class ModelInstanceExplorer extends Component {
   }
 
   render() {
-    const { entities, schemas } = this.props;
-    const { hovered } = this.state;
+    const { entities, hovered, schemas } = this.props;
 
     const handleNodeHover = this.handleNodeHover.bind(this);
+    const handleNodeOut = this.handleNodeOut.bind(this);
     const handleSelect = this.handleSelect.bind(this);
 
     if (!entities || Object.keys(entities).length === 0) {
@@ -97,6 +107,7 @@ class ModelInstanceExplorer extends Component {
               entities,
               nodeFill: this.fillColor,
               onNodeHover: handleNodeHover,
+              onNodeOut: handleNodeOut,
               schemas,
             })}
           </ExpandableInteractiveForceGraph>

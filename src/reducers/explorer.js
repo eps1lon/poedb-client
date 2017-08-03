@@ -1,7 +1,13 @@
 import _ from 'lodash';
 import { normalize } from 'normalizr';
 
-import { HIDE_EXPLORER, SHOW_EXPLORER } from '../actions/explorer';
+import withHover from './withHover';
+import {
+  HIDE_EXPLORER,
+  SHOW_EXPLORER,
+  NODE_HOVERED,
+  NODE_OUT,
+} from '../actions/explorer';
 import api from '../api';
 import * as schema from '../schema/generated';
 
@@ -41,4 +47,4 @@ const explorer = (state = initial, action) => {
   }
 };
 
-export default explorer;
+export default withHover(explorer, { over: NODE_HOVERED, out: NODE_OUT });

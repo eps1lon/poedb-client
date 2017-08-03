@@ -6,7 +6,14 @@ const propTypes = {
   collection: PropTypes.string.isRequired,
   fill: PropTypes.func,
   onNodeHover: PropTypes.func,
+  onNodeOut: PropTypes.func,
   props: PropTypes.object.isRequired,
+};
+
+const defaultProps = {
+  // nops
+  onNodeHover: () => undefined,
+  onNodeOut: () => undefined,
 };
 
 export const nodeId = ({ collection, props }) => {
@@ -15,7 +22,7 @@ export const nodeId = ({ collection, props }) => {
   return `${collection}-${row}`;
 };
 
-const InstanceNode = ({ collection, fill, onNodeHover, props }) => {
+const InstanceNode = ({ collection, fill, onNodeHover, onNodeOut, props }) => {
   const { row } = props;
 
   const fill_color = fill ? fill(collection) : undefined;
@@ -31,10 +38,12 @@ const InstanceNode = ({ collection, fill, onNodeHover, props }) => {
       // TODO this is potentially bad for performance, rather create
       // one listener with target select
       onMouseOver={() => onNodeHover(collection, props)}
+      onMouseOut={() => onNodeOut(collection, props)}
     />
   );
 };
 
 InstanceNode.propTypes = propTypes;
+InstanceNode.defaultProps = defaultProps;
 
 export default InstanceNode;

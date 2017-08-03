@@ -9,13 +9,20 @@ import Node, { nodeId } from './Node';
 const propTypes = {
   entities: PropTypes.object.isRequired,
   onNodeHover: PropTypes.func,
+  onNodeOut: PropTypes.func,
   schemas: PropTypes.object.isRequired,
   nodeFill: PropTypes.func,
 };
 
 // TODO this is not an actual component because components cant
 // return collections. Once react 16 (fiber) is used we can use it as one
-const ForceGraphChildren = ({ entities, nodeFill, onNodeHover, schemas }) => {
+const ForceGraphChildren = ({
+  entities,
+  nodeFill,
+  onNodeHover,
+  onNodeOut,
+  schemas,
+}) => {
   if (Object.keys(entities).length === 0) {
     return null;
   }
@@ -23,7 +30,13 @@ const ForceGraphChildren = ({ entities, nodeFill, onNodeHover, schemas }) => {
   const nodes = _.flatten(
     Object.entries(entities).map(([collection, entries]) => {
       return Object.values(entries).map(entry => {
-        return Node({ collection, fill: nodeFill, onNodeHover, props: entry });
+        return Node({
+          collection,
+          fill: nodeFill,
+          onNodeHover,
+          onNodeOut,
+          props: entry,
+        });
       });
     }),
   );

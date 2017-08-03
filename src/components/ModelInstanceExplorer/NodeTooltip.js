@@ -5,7 +5,12 @@ const propTypes = {
   node: PropTypes.object,
 };
 
-const NodeTooltip = ({ node: { collection, props } }) => {
+const defaultProps = {
+  node: {},
+};
+
+const NodeTooltip = ({ node }) => {
+  const { collection, props } = node;
   if (!props) {
     return null;
   }
@@ -29,5 +34,6 @@ const NodeTooltip = ({ node: { collection, props } }) => {
 };
 
 NodeTooltip.propTypes = propTypes;
+NodeTooltip.defaultProps = defaultProps;
 
 export default NodeTooltip;
