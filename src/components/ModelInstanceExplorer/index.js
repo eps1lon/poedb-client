@@ -13,14 +13,15 @@ import './index.css';
 const propTypes = {
   defaultFillColor: PropTypes.string,
   entities: PropTypes.object,
-  onHoverNode: PropTypes.func,
-  onSelectNode: PropTypes.func,
-  onOutNode: PropTypes.func,
+  onNodeHover: PropTypes.func,
+  onNodeSelect: PropTypes.func,
+  onNodeOut: PropTypes.func,
   schemas: PropTypes.object,
 };
 
 const defaultProps = {
   defaultFillColor: 'red',
+  onNodeSelect: () => undefined,
 };
 
 class ModelInstanceExplorer extends Component {
@@ -34,33 +35,15 @@ class ModelInstanceExplorer extends Component {
     this.updateColors();
   }
 
-  handleNodeHover(collection, node_props) {
-    const { onHoverNode } = this.props;
-
-    if (onHoverNode) {
-      onHoverNode(collection, node_props);
-    }
-  }
-
-  handleNodeOut(collection, node_props) {
-    const { onOutNode } = this.props;
-
-    if (onOutNode) {
-      onOutNode(collection, node_props);
-    }
-  }
-
   handleSelect(event, node) {
-    const { onSelectNode, schemas } = this.props;
+    const { onNodeSelect, schemas } = this.props;
 
-    if (onSelectNode) {
-      const [key, id] = node.id.split('-');
-      const [model, schema] = Object.entries(schemas).find(
-        ([model, schema]) => schema.key === key,
-      );
+    const [key, id] = node.id.split('-');
+    const [model, schema] = Object.entries(schemas).find(
+      ([model, schema]) => schema.key === key,
+    );
 
-      onSelectNode({ id, model, schema });
-    }
+    onNodeSelect({ id, model, schema });
   }
 
   simulationOptions() {
@@ -81,10 +64,7 @@ class ModelInstanceExplorer extends Component {
   }
 
   render() {
-    const { entities, hovered, schemas } = this.props;
-
-    const handleNodeHover = this.handleNodeHover.bind(this);
-    const handleNodeOut = this.handleNodeOut.bind(this);
+    const { entities, hovered, onNodeHover, onNodeOut, schemas } = this.props;
     const handleSelect = this.handleSelect.bind(this);
 
     if (!entities || Object.keys(entities).length === 0) {
@@ -106,8 +86,8 @@ class ModelInstanceExplorer extends Component {
             {ForceGraphChildren({
               entities,
               nodeFill: this.fillColor,
-              onNodeHover: handleNodeHover,
-              onNodeOut: handleNodeOut,
+              onNodeHover,
+              onNodeOut,
               schemas,
             })}
           </ExpandableInteractiveForceGraph>

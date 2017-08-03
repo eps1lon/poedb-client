@@ -22,7 +22,17 @@ export const nodeId = ({ collection, props }) => {
   return `${collection}-${row}`;
 };
 
-const InstanceNode = ({ collection, fill, onNodeHover, onNodeOut, props }) => {
+/*
+ * not an actual react component since react-force-vis needs its nodes
+ * to be immediate children
+ */
+const InstanceNode = ({
+  collection,
+  fill,
+  onNodeHover = defaultProps.onNodeHover,
+  onNodeOut = defaultProps.onNodeOut,
+  props,
+}) => {
   const { row } = props;
 
   const fill_color = fill ? fill(collection) : undefined;

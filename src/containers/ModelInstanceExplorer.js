@@ -20,10 +20,10 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelectNode: node => dispatch(nodeSelected(node)),
-    onHoverNode: (collection, props) =>
+    onNodeHover: (collection, props) =>
       dispatch(nodeHovered({ collection, props })),
-    onOutNode: (collection, props) => dispatch(nodeOut({ collection, props })),
+    onNodeSelect: node => dispatch(nodeSelected(node)),
+    onNodeOut: (collection, props) => dispatch(nodeOut({ collection, props })),
   };
 };
 
