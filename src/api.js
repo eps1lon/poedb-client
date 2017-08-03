@@ -11,6 +11,9 @@ const empty_model = {
 
 export const MODEL_NAME = Symbol('model name ident');
 
+export const isUnknown = attribute_name =>
+  /(Flag|Unknown|Data|Key|Keys|Index)\d*$/i.test(attribute_name);
+
 const mapModelNames = ({ result, description }, root_name) => {
   for (const [attr, { target_name }] of [
     ...Object.entries(description['belongsTo']),

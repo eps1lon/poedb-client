@@ -1,5 +1,7 @@
 import { humanize } from 'inflection';
 
+import { isUnknown } from '../api';
+
 const intOrDefault = (val, def) => {
   const cast = parseInt(val, 10);
 
@@ -9,9 +11,6 @@ const intOrDefault = (val, def) => {
     return cast;
   }
 };
-
-export const isUnknown = attribute_name =>
-  /(Flag|Unknown|Data|Key|Keys|Index)\d*$/i.test(attribute_name);
 
 /**
  * order is 

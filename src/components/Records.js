@@ -4,7 +4,7 @@ import ReactTable from 'react-table';
 
 import 'react-table/react-table.css';
 
-import { isUnknown } from '../util/recordsHeader';
+import { isUnknown } from '../api';
 
 class Records extends Component {
   handleExpander(new_expanded, index) {
