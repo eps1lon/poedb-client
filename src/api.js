@@ -74,5 +74,6 @@ export default reduxApi({
     headers: {
       Accept: 'application/json',
       'Accept-Version': '~1.0',
+      Authorization: process.env.REACT_APP_API_KEY,
     },
   });
