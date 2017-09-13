@@ -55,6 +55,34 @@ export const ActiveSkillType = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const AreaTransitionAnimation = new normalizr.Entity(
+  'area_transition_animations',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const AreaTransitionAnimationType = new normalizr.Entity(
+  'area_transition_animation_types',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const AreaTransitionInfo = new normalizr.Entity(
+  'area_transition_infos',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const AreaType = new normalizr.Entity(
+  'area_types',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const ArmourClass = new normalizr.Entity(
   'armour_classes',
   {},
@@ -503,13 +531,6 @@ export const DexMissionTracking = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
-export const Difficulty = new normalizr.Entity(
-  'difficulties',
-  {},
-  {
-    idAttribute: 'row',
-  },
-);
 export const DisplayMinionMonsterType = new normalizr.Entity(
   'display_minion_monster_types',
   {},
@@ -526,6 +547,13 @@ export const DivinationCardArt = new normalizr.Entity(
 );
 export const DivinationCardStashTabLayout = new normalizr.Entity(
   'divination_card_stash_tab_layouts',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const DropModifier = new normalizr.Entity(
+  'drop_modifiers',
   {},
   {
     idAttribute: 'row',
@@ -573,6 +601,13 @@ export const Environment = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const EnvironmentTransition = new normalizr.Entity(
+  'environment_transitions',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const Essence = new normalizr.Entity(
   'essences',
   {},
@@ -603,6 +638,20 @@ export const EventSeason = new normalizr.Entity(
 );
 export const EventSeasonReward = new normalizr.Entity(
   'event_season_rewards',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const EvergreenAchievement = new normalizr.Entity(
+  'evergreen_achievements',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const EvergreenAchievementType = new normalizr.Entity(
+  'evergreen_achievement_types',
   {},
   {
     idAttribute: 'row',
@@ -657,6 +706,13 @@ export const FlavourText = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const FlavourTextImage = new normalizr.Entity(
+  'flavour_text_images',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const Footprint = new normalizr.Entity(
   'footprints',
   {},
@@ -692,13 +748,6 @@ export const GlobalAudioConfig = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
-export const GlobalQuestFlag = new normalizr.Entity(
-  'global_quest_flags',
-  {},
-  {
-    idAttribute: 'row',
-  },
-);
 export const Grandmaster = new normalizr.Entity(
   'grandmasters',
   {},
@@ -727,6 +776,20 @@ export const GrantedEffectsPerLevel = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const Harbinger = new normalizr.Entity(
+  'harbingers',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const HarbingerMap = new normalizr.Entity(
+  'harbinger_maps',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const Hideout = new normalizr.Entity(
   'hideouts',
   {},
@@ -736,13 +799,6 @@ export const Hideout = new normalizr.Entity(
 );
 export const HideoutDoodad = new normalizr.Entity(
   'hideout_doodads',
-  {},
-  {
-    idAttribute: 'row',
-  },
-);
-export const HideoutInteractable = new normalizr.Entity(
-  'hideout_interactables',
   {},
   {
     idAttribute: 'row',
@@ -811,8 +867,22 @@ export const ItemClass = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const ItemClassCategory = new normalizr.Entity(
+  'item_class_categories',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const ItemExperiencePerLevel = new normalizr.Entity(
   'item_experience_per_levels',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const ItemTheme = new normalizr.Entity(
+  'item_themes',
   {},
   {
     idAttribute: 'row',
@@ -846,6 +916,13 @@ export const KillstreakThreshold = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const Labyrinth = new normalizr.Entity(
+  'labyrinths',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const LabyrinthArea = new normalizr.Entity(
   'labyrinth_areas',
   {},
@@ -867,13 +944,6 @@ export const LabyrinthIzaroChest = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
-export const LabyrinthLadderReward = new normalizr.Entity(
-  'labyrinth_ladder_rewards',
-  {},
-  {
-    idAttribute: 'row',
-  },
-);
 export const LabyrinthNodeOverride = new normalizr.Entity(
   'labyrinth_node_overrides',
   {},
@@ -883,6 +953,13 @@ export const LabyrinthNodeOverride = new normalizr.Entity(
 );
 export const LabyrinthReward = new normalizr.Entity(
   'labyrinth_rewards',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const LabyrinthRewardType = new normalizr.Entity(
+  'labyrinth_reward_types',
   {},
   {
     idAttribute: 'row',
@@ -918,6 +995,13 @@ export const LabyrinthSection = new normalizr.Entity(
 );
 export const LabyrinthSectionLayout = new normalizr.Entity(
   'labyrinth_section_layouts',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const LabyrinthTrial = new normalizr.Entity(
+  'labyrinth_trials',
   {},
   {
     idAttribute: 'row',
@@ -1000,6 +1084,20 @@ export const MapStashTabLayout = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const MasterActWeight = new normalizr.Entity(
+  'master_act_weights',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const MicroMigrationDatum = new normalizr.Entity(
+  'micro_migration_data',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const MicrotransactionCharacterPortraitVariation = new normalizr.Entity(
   'microtransaction_character_portrait_variations',
   {},
@@ -1016,6 +1114,13 @@ export const MicrotransactionFireworksVariation = new normalizr.Entity(
 );
 export const MicrotransactionPortalVariation = new normalizr.Entity(
   'microtransaction_portal_variations',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const MicrotransactionSlotId = new normalizr.Entity(
+  'microtransaction_slot_ids',
   {},
   {
     idAttribute: 'row',
@@ -1224,6 +1329,13 @@ export const MonsterSize = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const MonsterSpawnerOverride = new normalizr.Entity(
+  'monster_spawner_overrides',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const MonsterType = new normalizr.Entity(
   'monster_types',
   {},
@@ -1240,6 +1352,13 @@ export const MonsterVariety = new normalizr.Entity(
 );
 export const Music = new normalizr.Entity(
   'music',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const MysteryBox = new normalizr.Entity(
+  'mystery_boxes',
   {},
   {
     idAttribute: 'row',
@@ -1315,13 +1434,6 @@ export const NPCTextAudio = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
-export const NormalDifficultyMasterWeight = new normalizr.Entity(
-  'normal_difficulty_master_weights',
-  {},
-  {
-    idAttribute: 'row',
-  },
-);
 export const Notification = new normalizr.Entity(
   'notifications',
   {},
@@ -1345,6 +1457,20 @@ export const Orientation = new normalizr.Entity(
 );
 export const PVPType = new normalizr.Entity(
   'p_v_p_types',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const PantheonPanelLayout = new normalizr.Entity(
+  'pantheon_panel_layouts',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const PantheonSoul = new normalizr.Entity(
+  'pantheon_souls',
   {},
   {
     idAttribute: 'row',
@@ -1616,6 +1742,13 @@ export const ShopItemPrice = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const ShopPackagePlatform = new normalizr.Entity(
+  'shop_package_platforms',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const ShopPaymentPackage = new normalizr.Entity(
   'shop_payment_packages',
   {},
@@ -1709,6 +1842,13 @@ export const Stat = new normalizr.Entity(
 );
 export const StatDescriptionFunction = new normalizr.Entity(
   'stat_description_functions',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const StatInterpolationType = new normalizr.Entity(
+  'stat_interpolation_types',
   {},
   {
     idAttribute: 'row',
@@ -1812,13 +1952,6 @@ export const StrIntMissionRelicPattern = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
-export const StrMapMod = new normalizr.Entity(
-  'str_map_mods',
-  {},
-  {
-    idAttribute: 'row',
-  },
-);
 export const StrMission = new normalizr.Entity(
   'str_missions',
   {},
@@ -1828,6 +1961,13 @@ export const StrMission = new normalizr.Entity(
 );
 export const StrMissionBoss = new normalizr.Entity(
   'str_mission_bosses',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const StrMissionMapMod = new normalizr.Entity(
+  'str_mission_map_mods',
   {},
   {
     idAttribute: 'row',
@@ -1952,8 +2092,22 @@ export const TriggerSpawner = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const Tutorial = new normalizr.Entity(
+  'tutorials',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 export const UniqueChest = new normalizr.Entity(
   'unique_chests',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
+export const UniqueFragment = new normalizr.Entity(
+  'unique_fragments',
   {},
   {
     idAttribute: 'row',
@@ -2092,6 +2246,13 @@ export const XPPerLevelForMission = new normalizr.Entity(
     idAttribute: 'row',
   },
 );
+export const ZanaQuest = new normalizr.Entity(
+  'zana_quests',
+  {},
+  {
+    idAttribute: 'row',
+  },
+);
 Achievement.define({
   achievement_sets_display: AchievementSetsDisplay,
 });
@@ -2111,6 +2272,10 @@ ActiveSkill.define({
 });
 ActiveSkillTargetType.define({});
 ActiveSkillType.define({});
+AreaTransitionAnimation.define({});
+AreaTransitionAnimationType.define({});
+AreaTransitionInfo.define({});
+AreaType.define({});
 ArmourClass.define({});
 ArmourSurfaceType.define({});
 ArmourType.define({
@@ -2211,9 +2376,7 @@ CharacterStartState.define({
   character: Character,
   character_start_state_set: CharacterStartStateSet,
   passive_skills: [PassiveSkill],
-  normal_character_start_quest_state: [CharacterStartQuestState],
-  cruel_character_start_quest_state: [CharacterStartQuestState],
-  merciless_character_start_quest_state: [CharacterStartQuestState],
+  character_start_quest_state: [CharacterStartQuestState],
 });
 CharacterStartStateSet.define({});
 CharacterTextAudio.define({});
@@ -2222,9 +2385,9 @@ Chest.define({
   chest_effect: ChestEffect,
   corrupt_achievement_item: AchievementItem,
   currency_use_achievement_item: AchievementItem,
-  encounter_achievement_item: AchievementItem,
   mods: [Mod],
   tags: [Tag],
+  encounter_achievement_items: [AchievementItem],
 });
 ChestCluster.define({
   chests: [Chest],
@@ -2278,9 +2441,7 @@ Dance.define({
 });
 DaressoPitFight.define({});
 Default.define({});
-DefaultMonsterStat.define({
-  difficulty: Difficulty,
-});
+DefaultMonsterStat.define({});
 DescentExile.define({
   world_area: WorldArea,
   character: Character,
@@ -2322,7 +2483,7 @@ DexIntMissionTarget.define({
 });
 DexMission.define({});
 DexMissionMod.define({
-  mod: Mod,
+  mods: [Mod],
 });
 DexMissionMonster.define({
   boss_monster_variety: MonsterVariety,
@@ -2332,7 +2493,6 @@ DexMissionMonster.define({
 DexMissionTracking.define({
   npc_talk: NPCTalk,
 });
-Difficulty.define({});
 DisplayMinionMonsterType.define({
   monster_variety: MonsterVariety,
 });
@@ -2342,6 +2502,7 @@ DivinationCardArt.define({
 DivinationCardStashTabLayout.define({
   base_item_type: BaseItemType,
 });
+DropModifier.define({});
 DropPool.define({});
 EclipseMod.define({
   mod: Mod,
@@ -2353,7 +2514,12 @@ EndlessLedgeChest.define({
   world_area: WorldArea,
   base_item_types: [BaseItemType],
 });
-Environment.define({});
+Environment.define({
+  environment_transition: EnvironmentTransition,
+  music: [Music],
+  corrupted_music: [Music],
+});
+EnvironmentTransition.define({});
 Essence.define({
   base_item_type: BaseItemType,
   mods1: Mod,
@@ -2411,6 +2577,8 @@ EventSeason.define({});
 EventSeasonReward.define({
   event_season: EventSeason,
 });
+EvergreenAchievement.define({});
+EvergreenAchievementType.define({});
 ExperienceLevel.define({});
 ExplodingStormBuff.define({
   buff_definitions1: BuffDefinition,
@@ -2429,12 +2597,12 @@ Flask.define({
 });
 FlaskType.define({});
 FlavourText.define({});
+FlavourTextImage.define({});
 Footprint.define({});
 GameConstant.define({});
 GemTag.define({});
 GemType.define({});
 GlobalAudioConfig.define({});
-GlobalQuestFlag.define({});
 Grandmaster.define({
   mods: [Mod],
 });
@@ -2445,8 +2613,15 @@ GrantedEffectGroup.define({});
 GrantedEffectsPerLevel.define({
   granted_effect: GrantedEffect,
   stats: [Stat],
+  effectiveness_cost_constants: [EffectivenessCostConstant],
   quality_stats: [Stat],
   stats2: [Stat],
+});
+Harbinger.define({
+  monster_variety: MonsterVariety,
+});
+HarbingerMap.define({
+  base_item_type: BaseItemType,
 });
 Hideout.define({
   small_world_area: WorldArea,
@@ -2457,9 +2632,6 @@ Hideout.define({
 HideoutDoodad.define({
   base_item_type: BaseItemType,
   npc_master: NPCMaster,
-});
-HideoutInteractable.define({
-  base_item_type: BaseItemType,
 });
 ImpactSoundDatum.define({});
 IntMission.define({
@@ -2486,9 +2658,11 @@ InvasionMonstersPerArea.define({
   monster_varieties2: [MonsterVariety],
 });
 ItemClass.define({});
+ItemClassCategory.define({});
 ItemExperiencePerLevel.define({
   base_item_type: BaseItemType,
 });
+ItemTheme.define({});
 ItemVisualEffect.define({});
 ItemVisualIdentity.define({
   sound_effect: SoundEffect,
@@ -2507,6 +2681,7 @@ KillstreakThreshold.define({
   monster_variety: MonsterVariety,
   achievement_item: AchievementItem,
 });
+Labyrinth.define({});
 LabyrinthArea.define({
   normal_world_areas: [WorldArea],
   cruel_world_areas: [WorldArea],
@@ -2517,9 +2692,12 @@ LabyrinthExclusionGroup.define({});
 LabyrinthIzaroChest.define({
   chest: Chest,
 });
-LabyrinthLadderReward.define({});
 LabyrinthNodeOverride.define({});
-LabyrinthReward.define({});
+LabyrinthReward.define({
+  chest: Chest,
+  labyrinth_reward_type: LabyrinthRewardType,
+});
+LabyrinthRewardType.define({});
 LabyrinthSecret.define({
   achievement_item: AchievementItem,
   labyrinth_secret_effects0: [LabyrinthSecretEffect],
@@ -2538,13 +2716,16 @@ LabyrinthSectionLayout.define({
   labyrinth_secrets0: LabyrinthSecret,
   labyrinth_secrets1: LabyrinthSecret,
   labyrinth_area: LabyrinthArea,
-  labyrinth_node_override: LabyrinthNodeOverride,
   labyrinth_section_layout: [LabyrinthSectionLayout],
+  labyrinth_node_overrides: [LabyrinthNodeOverride],
+});
+LabyrinthTrial.define({
+  npc_text_audio: NPCTextAudio,
 });
 LabyrinthTrinket.define({
   base_item_type: BaseItemType,
-  labyrinth_secret: LabyrinthSecret,
   buff_buff_definition: BuffDefinition,
+  labyrinth_secrets: [LabyrinthSecret],
 });
 LeagueCategory.define({});
 LeagueFlag.define({});
@@ -2567,22 +2748,24 @@ MapConnection.define({
   map_pins1: MapPin,
 });
 MapDeviceRecipe.define({
+  world_area: WorldArea,
   base_item_types: [BaseItemType],
-  world_areas: [WorldArea],
 });
 MapInhabitant.define({
   stat: Stat,
+  monster_packs: [MonsterPack],
 });
 MapPin.define({
-  normal_waypoint_world_area: WorldArea,
-  cruel_waypoint_world_area: WorldArea,
-  merciless_waypoint_world_area: WorldArea,
-  normal_world_areas: [WorldArea],
-  merciless_world_areas: [WorldArea],
-  cruel_world_areas: [WorldArea],
+  waypoint_world_area: WorldArea,
   world_areas: [WorldArea],
 });
 MapStashTabLayout.define({});
+MasterActWeight.define({
+  npc_master: NPCMaster,
+});
+MicroMigrationDatum.define({
+  base_item_type: BaseItemType,
+});
 MicrotransactionCharacterPortraitVariation.define({});
 MicrotransactionFireworksVariation.define({
   base_item_type: BaseItemType,
@@ -2590,6 +2773,7 @@ MicrotransactionFireworksVariation.define({
 MicrotransactionPortalVariation.define({
   base_item_type: BaseItemType,
 });
+MicrotransactionSlotId.define({});
 MicrotransactionSocialFrameVariation.define({
   base_item_type: BaseItemType,
 });
@@ -2605,6 +2789,7 @@ MiscObject.define({
 });
 MissionTileMap.define({
   npc_master: NPCMaster,
+  mission_transition_tile: MissionTransitionTile,
   world_areas: [WorldArea],
 });
 MissionTransitionTile.define({});
@@ -2669,6 +2854,10 @@ MonsterResistance.define({});
 MonsterScalingByLevel.define({});
 MonsterSegment.define({});
 MonsterSize.define({});
+MonsterSpawnerOverride.define({
+  base_monster_variety: MonsterVariety,
+  override_monster_variety: MonsterVariety,
+});
 MonsterType.define({
   monster_resistance: MonsterResistance,
   tags: [Tag],
@@ -2679,32 +2868,31 @@ MonsterVariety.define({
   main_hand_item_class: ItemClass,
   off_hand_item_class: ItemClass,
   helmet_item_visual_identity: ItemVisualIdentity,
-  flashback_achievement_item: AchievementItem,
+  kill_while_onslaught_is_active_achievement_item: AchievementItem,
   monster_segment: MonsterSegment,
   monster_armour: MonsterArmour,
-  achievement_item: AchievementItem,
-  achievement_items4: AchievementItem,
+  kill_while_talisman_is_active_achievement_item: AchievementItem,
   mods: [Mod],
   tags: [Tag],
   granted_effects: [GrantedEffect],
   mods2: [Mod],
   weapon1_item_visual_identity: [ItemVisualIdentity],
   weapon2_item_visual_identity: [ItemVisualIdentity],
-  achievement_items: [AchievementItem],
+  kill_specific_monster_count_achievement_items: [AchievementItem],
   special_mods: [Mod],
-  achievement_items2: [AchievementItem],
-  normal_achievement_items: [AchievementItem],
-  merciless_achievement_items: [AchievementItem],
-  cruel_achievement_items: [AchievementItem],
-  normal_mods: [Mod],
-  cruel_mods: [Mod],
-  merciless_mods: [Mod],
-  kill_rare_in_normal_achievement_items: [AchievementItem],
-  kill_rare_in_cruel_achievement_items: [AchievementItem],
-  kill_rare_in_merciless_achievement_items: [AchievementItem],
-  count_kills_achievement_items: [AchievementItem],
+  kill_rare_achievement_items: [AchievementItem],
+  monster_level80_achievement_items: [AchievementItem],
+  part1_mods: [Mod],
+  part2_mods: [Mod],
+  endgame_mods: [Mod],
+  kill_rare_in_part2_achievement_items: [AchievementItem],
+  kill_rare_in_endgame_achievement_items: [AchievementItem],
+  kill_specific_monster_count2_achievement_items: [AchievementItem],
 });
 Music.define({});
+MysteryBox.define({
+  base_item_type: BaseItemType,
+});
 MysteryPack.define({});
 MysteryPackItem.define({});
 NPC.define({
@@ -2717,8 +2905,8 @@ NPCAudio.define({});
 NPCMaster.define({
   npc: NPC,
   signature_mod_mod: Mod,
-  achievement_item: AchievementItem,
   talisman_achievement_item: AchievementItem,
+  achievement_items: [AchievementItem],
   signature_mod_spawn_weight_tags: [Tag],
   unknown_weight_tags: [Tag],
   master_level5_achievement_items: [AchievementItem],
@@ -2732,17 +2920,27 @@ NPCShop.define({
 NPCTalk.define({
   npc: NPC,
   quest: Quest,
+  base_item_type: BaseItemType,
   npc_text_audio: [NPCTextAudio],
+  prophecies: [Prophecy],
 });
 NPCTalkCategory.define({});
 NPCTextAudio.define({
   character: Character,
 });
-NormalDifficultyMasterWeight.define({});
 Notification.define({});
 OldMapStashTabLayout.define({});
 Orientation.define({});
 PVPType.define({});
+PantheonPanelLayout.define({
+  effect1_stats: [Stat],
+  effect2_stats: [Stat],
+  effect3_stats: [Stat],
+  effect4_stats: [Stat],
+});
+PantheonSoul.define({
+  base_item_type: BaseItemType,
+});
 PassiveJewelSlot.define({
   passive_skill: PassiveSkill,
 });
@@ -2788,7 +2986,6 @@ ProphecyType.define({});
 Quest.define({});
 QuestAchievement.define({
   achievement_item: AchievementItem,
-  difficulty: Difficulty,
 });
 QuestFlag.define({});
 QuestReward.define({
@@ -2802,9 +2999,9 @@ QuestState.define({
   map_pins2: [MapPin],
 });
 QuestStaticReward.define({
-  stat: BaseItemType,
-  difficulty: Difficulty,
   quest: Quest,
+  client_string: ClientString,
+  stats: [Stat],
 });
 QuestVendorReward.define({
   npc: NPC,
@@ -2831,7 +3028,9 @@ RunicCircle.define({});
 ShieldType.define({
   base_item_type: BaseItemType,
 });
-ShopCategory.define({});
+ShopCategory.define({
+  applied_to_base_item_type: BaseItemType,
+});
 ShopCountry.define({
   shop_currency: ShopCurrency,
 });
@@ -2844,6 +3043,7 @@ ShopItemPrice.define({
   shop_item: ShopItem,
   shop_region: ShopRegion,
 });
+ShopPackagePlatform.define({});
 ShopPaymentPackage.define({
   upgrade_shop_payment_package: ShopPaymentPackage,
 });
@@ -2887,6 +3087,7 @@ Stat.define({
   off_hand_alias_stat: Stat,
 });
 StatDescriptionFunction.define({});
+StatInterpolationType.define({});
 StatSemantic.define({});
 StrDexIntMission.define({
   npc_talk: NPCTalk,
@@ -2941,15 +3142,15 @@ StrIntMissionRelicMod.define({
 StrIntMissionRelicPattern.define({
   relic_mods: [Mod],
 });
-StrMapMod.define({
-  mod: Mod,
-});
 StrMission.define({
   npc_talk: NPCTalk,
   mods: [Mod],
 });
 StrMissionBoss.define({
   monster_variety: MonsterVariety,
+});
+StrMissionMapMod.define({
+  mod: Mod,
 });
 StrMissionMapModNumber.define({});
 StrMissionSpiritEffect.define({
@@ -2985,9 +3186,7 @@ TalismanPack.define({
 });
 TerrainPlugin.define({});
 Tip.define({});
-Topology.define({
-  environment: Environment,
-});
+Topology.define({});
 TormentSpirit.define({
   monster_variety: MonsterVariety,
   summoned_monster_monster_variety: MonsterVariety,
@@ -2998,11 +3197,15 @@ TormentSpirit.define({
   mods1: [Mod],
 });
 TriggerSpawner.define({});
+Tutorial.define({});
 UniqueChest.define({
-  chest: Chest,
   word: Word,
+  flavour_text: FlavourText,
+  appearance_chest: Chest,
+  chest: Chest,
   mods: [Mod],
 });
+UniqueFragment.define({});
 UniqueJewelLimit.define({});
 UniqueSet.define({
   word: Word,
@@ -3037,12 +3240,13 @@ Word.define({
 Wordlist.define({});
 WorldArea.define({
   parent_town_world_area: WorldArea,
-  difficulty: Difficulty,
   achievement_item: AchievementItem,
   twinned_full_clear_achievement_item: AchievementItem,
   enter_achievement_item: AchievementItem,
-  '8_mods_full_clear_achievement_item': AchievementItem,
-  '1': [AchievementItem],
+  first_entry_npc_text_audio: NPCTextAudio,
+  first_entry_sound_effect: SoundEffect,
+  first_entry_npc: NPC,
+  environment: Environment,
   connections_world_areas: [WorldArea],
   topologies: [Topology],
   bosses_monster_varieties: [MonsterVariety],
@@ -3053,5 +3257,10 @@ WorldArea.define({
   vaal_area_world_areas: [WorldArea],
   area_type_tags: [Tag],
   tags: [Tag],
+  waypoint_activation_achievement_items: [AchievementItem],
+  completion_achievement_items: [AchievementItem],
 });
 XPPerLevelForMission.define({});
+ZanaQuest.define({
+  quest: Quest,
+});
