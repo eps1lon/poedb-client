@@ -32,6 +32,9 @@ request(
     uri: 'http://localhost:3000/describe/',
     method: 'GET',
     json: true,
+    headers: {
+      authorization: 'allowme', // poedb access key
+    },
   },
   async (error, response, body) => {
     const schema = new Schema(body);
